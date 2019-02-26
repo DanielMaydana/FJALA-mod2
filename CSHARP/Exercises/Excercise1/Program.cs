@@ -14,17 +14,24 @@ namespace Excercise1
             List<MyVector> vectList = new List<MyVector>();
             MyVector additionResult = new MyVector();
 
-            foreach (string strVect in args)
+            try
             {
-                vectList.Add(MyVector.atovect(strVect));
-            }
+                foreach (string strVect in args)
+                {
+                    vectList.Add(MyVector.atovect(strVect));
+                }
 
-            foreach(MyVector singleVector in vectList)
+                foreach (MyVector singleVector in vectList)
+                {
+                    additionResult += singleVector;
+                }
+    
+                additionResult.printVector();
+            }
+            catch (ArgumentException e)
             {
-                additionResult += singleVector;
+                Console.WriteLine(e);
             }
-
-            additionResult.printVector();
 
             Console.ReadKey();
 

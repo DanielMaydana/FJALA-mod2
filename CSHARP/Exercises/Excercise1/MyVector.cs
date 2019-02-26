@@ -53,8 +53,7 @@ namespace Excercise1
 
             if (!xConversion || !yConversion)
             {
-                Console.Write("ERRROOOOOOOR");
-                return converted;
+                throw new ArgumentException("Not a vector");
             }
             converted.setX(x);
             converted.setY(y);
