@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Class2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>header 1</th>
+                    <th>header 2</th>
+                    <th>header 3</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>body 1</td>
+                    <td>body 2</td>
+                    <td>body 3</td>
+                </tr>
+                <tr>
+                    <td>body 4</td>
+                    <td>body 5</td>
+                    <td>body 6</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div>
+        <form action="index.php" class="form" method="get">
+            <fieldset>
+                <legend>Basic Info</legend>
+                <label for="firstName">First Name</label>
+                <input type="number" name="firstName" id="firstName">
+                <label for="lastName">Last Name</label>
+                <input type="number" name="lastName" id="lastName">
+                <br>
+                <label for="radio"></label>
+                <input type="radio" name="gender" id="genderFemale" value="female">Female
+                <input type="radio" name="gender" id="genderMale" value="male">Male
+            </fieldset>
+            <fieldset>
+                <legend>Particularities</legend>
+                <label for="favLanguage">Fav Language</label>
+                <input type="text" name="favLanguage" id="favLanguage">
+                <label for="experience">Experience</label>
+                <input type="number" name="experience" id="experience">
+                <br>
+            </fieldset>
+            <fieldset>
+                <legend>User Information</legend>
+                <label for="permissions">Permissions</label>
+                Admin:<input type="checkbox" name="lang" id="lang1" value="admin" checked="">
+                User:<input type="checkbox" name="lang" id="lang2" value="user">
+                <br>
+                <label for="username">User Name</label>
+                <input type="text" name="userName" id="userName">
+                <label for="password">Password</legend>
+                <input type="password">
+                <br>
+                <select name="nationality" id="nationality">
+                    <option value="arg">Argentina</option>
+                    <option value="bol">Bolivia</option>
+                    <option value="chl">Chile</option>
+                </select>
+                <br>
+            </fieldset>
+            <input type="Submit" value="send">
+
+        </form>
+    </div>
+    <div>
+        <form action="tab1.html">
+            <fieldset>
+                <legend>Personal Info</legend>
+
+                <label for="firstName">Name</label> <br>
+                <input type="text" name="firstName" id="firstName">
+                <br>
+
+                <label for="lastName">Last Name</label> <br>
+                <input type="number" name="lastName" id="lastName">
+                <br>
+
+                <label for="age">Age</label> <br>
+                <input type="number" name="age">
+
+            </fieldset>
+            <fieldset>
+                <legend>Profesional Info</legend>
+
+                <label for="job">Job</label> <br>
+                <input type="text" name="job" id="job">
+                <br>
+
+                <label for="whatever">Whatever</label> <br>
+                <input type="number" name="whatever" id="whatever">
+                <br>
+
+                <label for="language">Language</label> <br>
+                <select name="language" id="language">
+                    <option value="eng">English</option>
+                    <option value="fre">French</option>
+                    <option value="ger">German</option>
+                </select>
+            </fieldset>
+            <input type="Submit" value="send" id="submitId">
+        </form>
+    </div>
+
+</body>
+
+</html>

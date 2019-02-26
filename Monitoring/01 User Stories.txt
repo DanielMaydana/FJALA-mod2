@@ -1,0 +1,12 @@
+User Stories
+
+- Detallar que campos y tipos de datos se utilizaran.
+- Las US se deben acabar dentro de la semana (sprint).
+- Los tasks se deben acabar en el dia.
+- Debe contener solo lo esencial.
+- Un Release puede estar compuesto de varios sprints que tienen varias US.
+- Dividir una funcionalidad en varias US.
+- Niveles:
+	Features (Funcionalidad) <- User Stories (medido en Story Points) <- Tareas (medido en horas)
+- No sobreestimar ni subestimar.
+- Software Versioning: 1(Mayor Release). 1(Minor Release). 1(Fixes)
