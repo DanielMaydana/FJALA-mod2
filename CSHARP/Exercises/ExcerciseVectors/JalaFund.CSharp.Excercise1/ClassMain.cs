@@ -34,7 +34,7 @@ namespace JalaFund.CSharp.Excercise1
                 Console.WriteLine(e);
             }
 
-            Console.WriteLine(VectorMath.DotProduct(new MyVector(2, 2), new MyVector(1, 1)) + " midnight rambler");
+            Console.WriteLine(VectorMath.DotProduct(new MyVector(2, 2), new MyVector(1, 1)) + " sergyo gai");
 
 
             Console.ReadKey();

@@ -12,9 +12,6 @@ namespace UtilityClasses
         public static MyVector Addition(MyVector vectorA, MyVector vectorB)
         {
             MyVector result = new MyVector();
-
-            Console.WriteLine(result.xCoordinate + " yeeeessss");
-
             result.xCoordinate = vectorA.xCoordinate + vectorB.xCoordinate;
             result.yCoordinate = vectorA.yCoordinate + vectorB.yCoordinate;
             return result;
