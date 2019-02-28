@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using CustomDataTypes;
+using UtilityClasses;
 
-namespace Excercise1
+namespace JalaFund.CSharp.Excercise1
 {
-    class Program
+    class ClassMain
     {
         static void Main(string[] args)
         {
@@ -18,24 +19,26 @@ namespace Excercise1
             {
                 foreach (string strVect in args)
                 {
-                    vectList.Add(MyVector.atovect(strVect));
+                    vectList.Add(MyVector.StrToVect(strVect));
                 }
 
                 foreach (MyVector singleVector in vectList)
                 {
-                    additionResult += singleVector;
+                    additionResult = VectorMath.Addition(additionResult, singleVector);
                 }
-    
-                additionResult.printVector();
+
+                Console.WriteLine(additionResult.xCoordinate + "," + additionResult.yCoordinate);
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e);
             }
 
+            Console.WriteLine(VectorMath.DotProduct(new MyVector(2, 2), new MyVector(1, 1)) + " sergyo gai");
+
+
             Console.ReadKey();
 
         }
-
     }
 }
