@@ -1,0 +1,50 @@
+Proceso:
+1 Idea
+2 Alcance
+3 Estructura
+4 Superficial
+5 Desarrollo
+	
+*material design
+
+UI
+El medio que permita interactuar de manera directa con un sistema (Es la primera impresion).
+
+Process:
+*same as below
+
+- Todo lo que se ve(composicion de colores y elementos)
+- Coprension de herramientas en linea (como empleamos herramientas*)
+
+UX
+Es la suma de todas las interacciones que una persona tiene con un producto en un periodo determinado de tiempo y su experiencia (Que experimenta el usuario antes, durante y despues).
+
+Process:
+1 Sketch:
+	- Ideas
+	- Caracteristicas
+2 Wireframe
+	- Funcionalidad
+	- Flujo de interaccion
+	- Razonamiento
+3 Mockup
+	- Look and feel
+	- Iconos / Textos
+4 Prototipo
+	- Animaciones
+	- Comportamiento
+
+- Conocimientos basicos acerca de la psicoogia del usuario (saber 
+el state-of-mind del usuario)
+- Aprender a predecir patrones y comportamintos de usuario
+
+
+IDX
+- Union de UI y UX
+- Relacion psicologica
+
+
+INTERFAZ
+
+1 Que quiero lograr?
+2 El medio 

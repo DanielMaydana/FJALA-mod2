@@ -12,30 +12,27 @@ namespace JalaFund.CSharp.Excercise1
     {
         static void Main(string[] args)
         {
-            List<MyVector> vectList = new List<MyVector>();
-            MyVector additionResult = new MyVector();
+            List<MyVector> vectorList = new List<MyVector>();
+            MyVector additionResult = new MyVector(0, 0);
 
             try
             {
-                foreach (string strVect in args)
+                foreach (string vectorString in args)
                 {
-                    vectList.Add(MyVector.StrToVect(strVect));
+                    vectorList.Add(MyVector.StringToVector(vectorString));
                 }
 
-                foreach (MyVector singleVector in vectList)
+                foreach (MyVector singleVector in vectorList)
                 {
-                    additionResult = VectorMath.Addition(additionResult, singleVector);
+                    additionResult += singleVector;
                 }
 
-                Console.WriteLine(additionResult.xCoordinate + "," + additionResult.yCoordinate);
+                Console.WriteLine(additionResult.XCoordinate + "," + additionResult.YCoordinate);
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e);
             }
-
-            Console.WriteLine(VectorMath.DotProduct(new MyVector(2, 2), new MyVector(1, 1)) + " sergyo gai");
-
 
             Console.ReadKey();
 

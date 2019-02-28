@@ -8,32 +8,33 @@ namespace CustomDataTypes
 {
     public class MyVector
     {
-        public int xCoordinate { get; set; }
-        public int yCoordinate { get; set; }
+        public int XCoordinate{ get; set; }
+        public int YCoordinate{ get; set; }
+        private static string ExceptionNotVector = "Not a vector";
 
         public MyVector(int newXCoordinate, int newYCoordinate)
         {
-            xCoordinate = newXCoordinate;
-            yCoordinate = newYCoordinate;
-        }
-        public MyVector()
-        {
+            XCoordinate = newXCoordinate;
+            YCoordinate = newYCoordinate;
         }
 
-        public static MyVector StrToVect(string vectorAsStr)
+        public static MyVector StringToVector(string vectorString)
         {
-            MyVector converted = new MyVector();
-            string[] coordinates = vectorAsStr.Split(',');
+            string[] coordinates = vectorString.Split(',');
 
             if (!int.TryParse(coordinates[0], out int newXCoordinate) || !int.TryParse(coordinates[1], out int newYCoordinate))
             {
-                throw new ArgumentException("Not a vector");
+                throw new ArgumentException(ExceptionNotVector);
             }
-            converted.xCoordinate = newXCoordinate;
-            converted.yCoordinate = newYCoordinate;
 
-            return converted;
+            return new MyVector(newXCoordinate, newYCoordinate);
         }
+
+        public static MyVector operator +(MyVector vectorA, MyVector vectorB)
+        {
+            return new MyVector(vectorA.XCoordinate + vectorB.XCoordinate, vectorA.YCoordinate + vectorB.YCoordinate);
+        }
+
 
     }
 }
