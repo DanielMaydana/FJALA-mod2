@@ -12,17 +12,17 @@ namespace JalaFund.CSharp.Excercise1
     {
         static void Main(string[] args)
         {
-            List<MyVector> vectorList = new List<MyVector>();
-            MyVector additionResult = new MyVector(0, 0);
+            List<Vector2D> vectorList = new List<Vector2D>();
+            Vector2D additionResult = new Vector2D(0, 0);
 
             try
             {
                 foreach (string vectorString in args)
                 {
-                    vectorList.Add(MyVector.StringToVector(vectorString));
+                    vectorList.Add(Vector2D.StringToVector(vectorString));
                 }
 
-                foreach (MyVector singleVector in vectorList)
+                foreach (Vector2D singleVector in vectorList)
                 {
                     additionResult += singleVector;
                 }

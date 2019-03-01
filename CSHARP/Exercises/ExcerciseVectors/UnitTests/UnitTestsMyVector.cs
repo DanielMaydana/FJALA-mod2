@@ -11,8 +11,8 @@ namespace UnitTests
         [TestMethod]
         public void TestStringToVector()
         {
-            MyVector vectorA = new MyVector(1, -1);
-            MyVector vectorB = MyVector.StringToVector("1, -1");
+            Vector2D vectorA = new Vector2D(1, -1);
+            Vector2D vectorB = Vector2D.StringToVector("1, -1");
 
             Assert.AreEqual(true, VectorMath.Equal(vectorA, vectorB));
 

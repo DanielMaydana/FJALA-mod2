@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace CustomDataTypes
 {
-    public class MyVector
+    public class Vector2D
     {
         public int XCoordinate{ get; set; }
         public int YCoordinate{ get; set; }
         private static string ExceptionNotVector = "Not a vector";
 
-        public MyVector(int newXCoordinate, int newYCoordinate)
+        public Vector2D(int newXCoordinate, int newYCoordinate)
         {
             XCoordinate = newXCoordinate;
             YCoordinate = newYCoordinate;
         }
 
-        public static MyVector StringToVector(string vectorString)
+        public static Vector2D StringToVector(string vectorString)
         {
             string[] coordinates = vectorString.Split(',');
 
@@ -27,12 +27,12 @@ namespace CustomDataTypes
                 throw new ArgumentException(ExceptionNotVector);
             }
 
-            return new MyVector(newXCoordinate, newYCoordinate);
+            return new Vector2D(newXCoordinate, newYCoordinate);
         }
 
-        public static MyVector operator +(MyVector vectorA, MyVector vectorB)
+        public static Vector2D operator +(Vector2D vectorA, Vector2D vectorB)
         {
-            return new MyVector(vectorA.XCoordinate + vectorB.XCoordinate, vectorA.YCoordinate + vectorB.YCoordinate);
+            return new Vector2D(vectorA.XCoordinate + vectorB.XCoordinate, vectorA.YCoordinate + vectorB.YCoordinate);
         }
 
 
