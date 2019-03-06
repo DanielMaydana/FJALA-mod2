@@ -1,10 +1,6 @@
-Proceso:
-1 Idea
-2 Alcance
-3 Estructura
-4 Superficial
-5 Desarrollo
-	
+- Behance
+- Pinterest
+
 *material design
 
 UI
