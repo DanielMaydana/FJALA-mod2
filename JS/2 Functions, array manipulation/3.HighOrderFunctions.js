@@ -64,13 +64,4 @@ for (let index = 0; index < employes.length; index++) {
 
 console.log(':::JoungDEVS =>', joungDevs); 
 
-
-
-
-
-
-
-
-
-
 //some examples of High order functions are .foreach, map, filter, find, reduce, every, some, findIndex All are array manipulators

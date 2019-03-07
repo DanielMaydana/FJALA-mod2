@@ -1,0 +1,10 @@
+Proceso proceso multidisciplinario:
+
+- Arquitectura de info
+- Contenido
+- Test
+- UI
+- User research
+
+UI: 20%
+UX: 80%

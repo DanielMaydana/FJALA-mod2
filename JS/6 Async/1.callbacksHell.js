@@ -5,22 +5,12 @@ function fakeRequest(onSuccess, onError) {
     // onError({ id: '1441', name: 'Rob' });
     // if error onError will Called;
     // onError('unspected error');
-  }, 4000);
+  }, 1000);
 }
-
 
 function getUser() {
   fakeRequest(response => {
-    console.log(response, 'first call');
-  }, error => {
-    console.log(error, 'error');
-  });
-}
-
-
-function getUser() {
-  fakeRequest(response => {
-    console.log(response, 'firstCall');;
+    console.log(response, 'firstCall');
     fakeRequest(response => {
       console.log(response, 'secondCall');
       fakeRequest(response => {

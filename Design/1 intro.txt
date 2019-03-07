@@ -39,8 +39,7 @@ IDX
 - Union de UI y UX
 - Relacion psicologica
 
-
 INTERFAZ
 
 1 Que quiero lograr?
-2 El medio 
+2 El medio

@@ -1,0 +1,19 @@
+/* p ~ p{
+    background-color: yellow;
+} */
+
+a[title~=photo] {
+    color: red;
+}
+
+p[lang|="eng"]{
+    color: green;
+}
+
+p[st$="e1"]{
+    color: blue;
+}
+
+p[st*="excellent"]{
+    color: gold;
+}
