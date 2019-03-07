@@ -8,7 +8,7 @@ namespace MainProgram
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(RomanMath.Multiplication(new RomanNumber(1), new RomanNumber(3)).RomanString);
+            Console.WriteLine(RomanMath.Multiplication(new RomanNumber(1), new RomanNumber("III")).RomanString);
             Console.ReadKey();
         }
     }

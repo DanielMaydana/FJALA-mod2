@@ -13,13 +13,13 @@ namespace CustomDataTypes
         public string RomanString { private set; get; }
         public double RomanNumeral { private set; get; } = 0.0D;
 
-        private char[] upperCaseNumerals = {'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+        List<char> upperCaseNumerals = new List<char>(new char[] { 'I', 'V', 'X', 'L', 'C', 'D', 'M' });
 
         // A RomanNumber can be constructed from a string like "XXII",
         // checking first that the string doesn't have illegal characters.
         public RomanNumber(string numberProspect)
         {
-            CheckStringValidity(numberProspect);
+            CheckStringValidity(numberProspect);    
             RomanString = numberProspect;
         }
 
@@ -32,7 +32,7 @@ namespace CustomDataTypes
 
         // The actual conversion method allows positive numbers ranging from 1 to 3999
         // due to range constraints caused by the use of recursivity.
-        private string ToRoman(double number)
+        private static string ToRoman(double number)
         {
             if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("Insert value betwheen 1 and 3999");
             if (number < 1) return string.Empty;
@@ -57,7 +57,7 @@ namespace CustomDataTypes
             return RomanA.RomanNumeral == RomanB.RomanNumeral;
         }
 
-        public static bool operator !=(RomanNumber RomanA, RomanNumber RomanB)
+        public static bool operator !=(RomanNumber RomanA, RomanNumber RomanB)  
         {
             return RomanA.RomanNumeral != RomanB.RomanNumeral;
         }
@@ -67,15 +67,9 @@ namespace CustomDataTypes
         #region CheckStringValidity
         private void CheckStringValidity(string numberProspect)
         {
-            foreach(var incomingCharacter in numberProspect)
+            if(!upperCaseNumerals.Any(romanChar => numberProspect.Contains(romanChar)))
             {
-                foreach(char singleCharacter in upperCaseNumerals)
-                {
-                    if(incomingCharacter != singleCharacter)
-                    {
-                        throw (new ArgumentException("Not a roman numeral"));
-                    }
-                }
+                throw new ArgumentException("Not a valid string");
             }
         }
         #endregion
