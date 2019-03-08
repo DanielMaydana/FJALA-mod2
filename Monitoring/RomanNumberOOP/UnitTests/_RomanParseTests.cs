@@ -4,7 +4,7 @@ using MainProgram;
 
 namespace UnitTests
 {
-    public class _RomanParseTest
+    public class _RomanParseTests
     {
         [Fact]
         public void GetItem_Returns_Empty_String_For_Parameters_Zero()

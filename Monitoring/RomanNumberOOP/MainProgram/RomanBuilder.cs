@@ -7,8 +7,14 @@ namespace MainProgram
     {
         public static string Build(int number)
         {
-            
-            string built = "";
+            number = Math.Abs(number);
+
+            if (number > 4999)
+            {
+                throw new ArgumentException("Numbers above 4999 not supported");
+            }
+
+            string builtString = "";
             List<int> isolatedDigits = GetIntList(number);
             List<string> singleRomanValues = new List<string>();
 
@@ -21,10 +27,10 @@ namespace MainProgram
 
             foreach (var value in singleRomanValues)
             {
-                built += value;
+                builtString += value;
             }
 
-            return built; 
+            return builtString; 
         }
 
         private static List<int> GetIntList(int num)
