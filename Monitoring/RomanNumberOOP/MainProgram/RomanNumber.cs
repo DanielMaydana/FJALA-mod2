@@ -23,6 +23,5 @@ namespace MainProgram
             RomanString = RomanBuilder.Build(auxValue);
             RomanValue = auxValue;
         }
-
     }
 }
