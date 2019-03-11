@@ -1,43 +1,13 @@
 #include<iostream>
 #include<string>
+#include "IJsonUtilities.h"
+#include "JsonNumber.h"
+#include "JsonString.h"
+#include "JsonArray.h"
+#include "JsonObject.h"
 
 using namespace std;
 
-class IJsonUtilities
-{
-public:
-
-	virtual ~IJsonUtilities()
-	{ }
-	
-	virtual string to_string() = 0;
-};
-
-
-class JsonNumber : public IJsonUtilities
-{
-public:
-	JsonNumber(int number)
-	{
-
-	}
-
-	string to_string()
-	{
-
-	}
-
-	~JsonNumber()
-	{
-	}
-
-private:
-
-};
-
-
-//----------------------------------------------------------
-//----------------------------end---------------------------
 bool test0()
 {
     JsonNumber jn { 3141 };
@@ -80,22 +50,22 @@ bool test5()
     return jo.to_string() == "{ \"firstName\": \"John\", \"lastName\": \"Smith\", \"birthYear\": 1977 }";
 }
 
-// bool test6()
-// {
-//     JsonArray ja;
-//     ja.add("hello");
+bool test6()
+{
+    JsonArray ja;
+    ja.add("hello");
 
-//     JsonObject jo;
-//     jo.add("firstName", "John");
-//     jo.add("lastName", "Smith");
-//     jo.add("birthYear", 1977);
+    JsonObject jo;
+    jo.add("firstName", "John");
+    jo.add("lastName", "Smith");
+    jo.add("birthYear", 1977);
 
-//     ja.add(jo);
+    ja.add(jo);
 
-//     ja.add(1492);
+    ja.add(1492);
 
-//     return ja.to_string() == "[\"hello\", { \"firstName\": \"John\", \"lastName\": \"Smith\", \"birthYear\": 1977 }, 1492]";
-// }
+    return ja.to_string() == "[\"hello\", { \"firstName\": \"John\", \"lastName\": \"Smith\", \"birthYear\": 1977 }, 1492]";
+}
 
 // bool test7()
 // {
@@ -110,7 +80,9 @@ bool test5()
 //     ingredients.add("azucar");
 
 //     jo.add("ingredientes", ingredients);
-//     return jo.to_string() == "{ \"nombre\": \"jugo de frutas\", \"ingredientes\": [ \"leche\", \"frutilla\", \"manzana\", \"azucar\" ] }";
+
+//     cout << jo.to_string() << "\n";   
+//     return jo.to_string() == "{ \"nombre\": \"jugo de frutas\", \"ingredientes\": [\"leche\", \"frutilla\", \"manzana\", \"azucar\"] }";
 // }
 
 // bool test8()
@@ -172,8 +144,8 @@ int main()
     score += test0();
     score += test3();
     score += test4();
-    // score += test5();
-    // score += test6();
+    score += test5();
+    score += test6();
     // score += test7();
     // score += test8();
     // score += test9();
