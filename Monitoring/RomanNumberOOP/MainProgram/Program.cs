@@ -13,11 +13,13 @@ namespace MainProgram
 
             //List<string> RomanTableUnits = new List<string> { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
-            var test = "whatever";
+            //var test = ConfigurationManager.AppSettings["caseSelector"].ToString();
 
-            Console.WriteLine(typeof test);
+            //Console.WriteLine(test);
 
-            Console.WriteLine(RomanBuilder.Build(4999));
+            //Console.WriteLine(Settings.Instance.CaseSelector.CaseSelection);
+
+            //Console.WriteLine(RomanBuilder.Build(4999));
 
             Console.ReadKey();
         }
