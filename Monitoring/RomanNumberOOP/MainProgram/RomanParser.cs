@@ -12,38 +12,39 @@ namespace MainProgram
             }
             else
             {
+                int caseSelect = Settings.Instance.CaseSelector.CaseSelection;
                 number -= 1;
-            }
 
-            switch (order)
-            {
-                case 0:
-                    {
-                        return ConversionTable.RomanTableUnits[number];
-                    }
-                case 1:
-                    {
-                        return ConversionTable.RomanTableTens[number];
-                    }
-                case 2:
-                    {
-                        return ConversionTable.RomanTableHundreds[number];
-                    }
-                case 3:
-                    {
-                        string thousandsString = "";
-
-                        for (int i = 0; i <= number; i++)
+                switch (order)
+                {
+                    case 0:
                         {
-                            thousandsString += ConversionTable.RomanTableThousand;
+                            return ConversionTable.RomanTableUnits[caseSelect][number];
                         }
+                    case 1:
+                        {
+                            return ConversionTable.RomanTableTens[caseSelect][number];
+                        }
+                    case 2:
+                        {
+                            return ConversionTable.RomanTableHundreds[caseSelect][number];
+                        }
+                    case 3:
+                        {
+                            string thousandsString = "";
 
-                        return thousandsString;
-                    }
-                default:
-                    {
-                        return "";
-                    }
+                            for (int i = 0; i <= number; i++)
+                            {
+                                thousandsString += ConversionTable.RomanTableThousand[caseSelect];
+                            }
+
+                            return thousandsString;
+                        }
+                    default:
+                        {
+                            return "";
+                        }
+                }
             }
         }
     }

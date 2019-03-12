@@ -32,11 +32,11 @@ namespace MainProgram
 
     public class CaseSettings
     {
-        public string CaseSelection = "upper";
+        public int CaseSelection = 1;
 
         public CaseSettings()
         {
-            CaseSelection = ConfigurationManager.AppSettings["caseSelector"].ToString();
+            CaseSelection = int.Parse(ConfigurationManager.AppSettings["caseSelector"].ToString());
         }
     }
 }
