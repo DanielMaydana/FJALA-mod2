@@ -5,22 +5,21 @@ namespace MainProgram
 {
     public static class RomanBuilder
     {
-        public static string Build(int number)
+        public static string Build(int number, RomanSettings settings)
         {
-            number = Math.Abs(number);
-
             if (number > 4999)
             {
                 throw new ArgumentException("Numbers above 4999 not supported");
             }
 
             string builtString = "";
+            
             List<int> isolatedDigits = GetIntList(number);
             List<string> singleRomanValues = new List<string>();
 
             for (int position = 0; position < isolatedDigits.Count; position++)
             {
-                singleRomanValues.Add(RomanParser.GetItem(isolatedDigits[position], position));
+                singleRomanValues.Add(RomanParser.GetItem(isolatedDigits[position], position, settings));
             }
 
             singleRomanValues.Reverse();
@@ -30,7 +29,7 @@ namespace MainProgram
                 builtString += value;
             }
 
-            return builtString; 
+            return RomanBeautify.Enclosure(builtString, settings);
         }
 
         private static List<int> GetIntList(int num)

@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Settings.cs" />
+    <Compile Include="RomanBeautify.cs" />
+    <Compile Include="RomanOrnaments.cs" />
+    <Compile Include="RomanSettings.cs" />
     <Compile Include="ConversionTable.cs" />
     <Compile Include="RomanParser.cs" />
     <Compile Include="Program.cs" />

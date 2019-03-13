@@ -8,18 +8,13 @@ namespace MainProgram
     {
         static void Main(string[] args)
         {
+            RomanSettings settings = new RomanSettings();
+            //settings.casing = int.Parse(ConfigurationManager.AppSettings["caseSwitch"]);
+            //settings.enclosure = int.Parse(ConfigurationManager.AppSettings["bracketSwitch"]);
 
-            Console.WriteLine((new RomanNumber(22)).RomanString);
+            Console.WriteLine((new RomanNumber(222, settings)).RomanString);
 
-            //List<string> RomanTableUnits = new List<string> { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
-
-            //var test = ConfigurationManager.AppSettings["caseSelector"].ToString();
-
-            //Console.WriteLine(test);
-
-            //Console.WriteLine(Settings.Instance.CaseSelector.CaseSelection);
-
-            Console.WriteLine($"{RomanBuilder.Build(3459)} | {"MMMCDLIX"}");
+            //Console.WriteLine($"{RomanBuilder.Build(3459, new RomanSettings())} | {"MMMCDLIX"}");
 
             Console.ReadKey();
         }

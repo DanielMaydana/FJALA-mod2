@@ -4,7 +4,7 @@ namespace MainProgram
 {
     public class RomanParser
     {
-        public static string GetItem(int number, int order)
+        public static string GetItem(int number, int order, RomanSettings settings)
         {
             if (number == 0)
             {
@@ -12,8 +12,8 @@ namespace MainProgram
             }
             else
             {
-                int caseSelect = Settings.Instance.CaseSelector.CaseSelection;
                 number -= 1;
+                int caseSelect = settings.casing;
 
                 switch (order)
                 {
