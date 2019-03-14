@@ -12,24 +12,23 @@ namespace MainProgram
                 throw new ArgumentException("Numbers above 4999 not supported");
             }
 
-            string builtString = "";
-            
-            List<int> isolatedDigits = GetIntList(number);
-            List<string> singleRomanValues = new List<string>();
+            List<int> splittedDigits = GetIntList(number);
+            List<string> splittedRomanDigits = new List<string>();
+            string singleRoman;
 
-            for (int position = 0; position < isolatedDigits.Count; position++)
+            for (int position = 0; position < splittedDigits.Count; position++)
             {
-                singleRomanValues.Add(RomanParser.GetItem(isolatedDigits[position], position, settings));
+                singleRoman = RomanParser.GetItem(splittedDigits[position], position, settings);
+
+                if (singleRoman != "")
+                {
+                    splittedRomanDigits.Add(singleRoman);
+                }
             }
 
-            singleRomanValues.Reverse();
+            splittedRomanDigits.Reverse();
 
-            foreach (var value in singleRomanValues)
-            {
-                builtString += value;
-            }
-
-            return RomanBeautify.Enclosure(builtString, settings);
+            return RomanBeautify.ConcatAndFormat(splittedRomanDigits, settings);
         }
 
         private static List<int> GetIntList(int num)

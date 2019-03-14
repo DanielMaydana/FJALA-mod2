@@ -11,6 +11,6 @@ namespace MainProgram
     public class RomanSettings
     {
         public int casing { get; set; } = 1;
-        public string beautifier { get; set; } = ",,";
+        public string enclosure { get; set; } = ",";
     }
 }

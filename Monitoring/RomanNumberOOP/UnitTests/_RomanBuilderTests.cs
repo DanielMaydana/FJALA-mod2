@@ -22,9 +22,38 @@ namespace UnitTests
         public void Build_Returns_Uppercase_String_Enclosed_In_Parenthesis_For_3459()
         {
             RomanSettings testSettings = new RomanSettings();
-            testSettings.enclosure = 1;
 
-            Assert.Equal("(MMMCDLIX)", RomanBuilder.Build(3459, testSettings));
+            Assert.Equal("MMMCDLIX", RomanBuilder.Build(3459, testSettings));
+        }
+
+        [Fact]
+        public void Build_Returns_Lowercase_With_Separation_Four_Thousand_For_3333()
+        {
+            RomanSettings testSettings = new RomanSettings();
+            testSettings.beautifier = ", ,";
+            testSettings.casing = 0;
+
+            Assert.Equal("mmm ccc xxx iii", RomanBuilder.Build(3333, testSettings));
+        }
+
+        [Fact]
+        public void Build_Returns_Enclosed_Lowercase_Four_Thousand_With_Separation_For_4999()
+        {
+            RomanSettings testSettings = new RomanSettings();
+            testSettings.beautifier = "[,_,]";
+            testSettings.casing = 0;
+
+            Assert.Equal("[mmmm_cm_xc_ix]", RomanBuilder.Build(4999, testSettings));
+        }
+
+        [Fact]
+        public void Build_Returns_Enclosed_Lowercase_Four_Thousand_With_Separation_For_3000()
+        {
+            RomanSettings testSettings = new RomanSettings();
+            testSettings.beautifier = "{,_,}";
+            testSettings.casing = 0;
+
+            Assert.Equal("{mmm}", RomanBuilder.Build(3000, testSettings));
         }
 
         [Fact]

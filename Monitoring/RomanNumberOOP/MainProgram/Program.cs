@@ -8,13 +8,14 @@ namespace MainProgram
     {
         static void Main(string[] args)
         {
-            RomanSettings settings = new RomanSettings();
+            //RomanSettings settings = new RomanSettings();
             //settings.casing = int.Parse(ConfigurationManager.AppSettings["caseSwitch"]);
             //settings.enclosure = int.Parse(ConfigurationManager.AppSettings["bracketSwitch"]);
 
-            Console.WriteLine((new RomanNumber(222, settings)).RomanString);
-
-            //Console.WriteLine($"{RomanBuilder.Build(3459, new RomanSettings())} | {"MMMCDLIX"}");
+            RomanSettings settings = new RomanSettings();
+            settings.beautifier = "[,_,]";
+            settings.casing = 0;
+            Console.WriteLine((new RomanNumber(3000, settings)).RomanString);
 
             Console.ReadKey();
         }
