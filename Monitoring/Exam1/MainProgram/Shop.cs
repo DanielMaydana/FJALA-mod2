@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RomanFormatter
+namespace MainProgram
 {
-    public class Class1
+    public class Shop
     {
+        public Shop()
+        {
+
+        }
+
     }
 }

@@ -25,6 +25,7 @@ namespace UnitTests
         [Fact]
         public void GetItem_Returns_Lowercase_Forty_For_Digit_4_Order_1()
         {
+            //.AppSettings["bracketSwitch"] = { x};
             RomanSettings testSetting = new RomanSettings();
             testSetting.casing = 0;
 
