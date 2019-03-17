@@ -1,0 +1,107 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #330136;
+  color: #fff;
+}
+
+.btn {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  border: 0;
+  font-size: 12px;
+  position: relative;
+  margin-left: 12px;
+  opacity: 0.6;
+  transition: all ease 0.3s;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+
+.btn.save-btn {
+  background: green;
+  color: #fff;
+}
+
+.btn.cancel-btn {
+  background: #C9463D;
+  color: #fff;
+}
+
+input {
+  padding: 6px 12px;
+  border-radius: 3px;
+  border: 0;
+  border: 1px solid #ccc;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#people-form {
+  margin: 32px 0;
+  min-width: 320px;
+}
+
+.header {
+  background: #5E1742;
+  height: 48px;
+  line-height: 48px;
+  width: 100%;
+  padding-left: 16px;
+  width: calc(100% - 16px);
+}
+
+.hide {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(16px);
+}
+
+.animated-input {
+  background: transparent;
+}
+
+.animated-input {
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+  transition: all ease 0.3s;
+  color: #fff;
+}
+
+.input-component {
+  margin: 8px 0;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes Gradient {
+	0% {
+    background-position: 0% 50%;
+    opacity: 0.6;
+	}
+	50% {
+    background-position: 100% 50%;
+    opacity: 1;
+	}
+	100% {
+    background-position: 0% 50%;
+	}
+}

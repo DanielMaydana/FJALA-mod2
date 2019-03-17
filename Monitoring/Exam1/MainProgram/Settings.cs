@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Configuration;
 using System.Threading.Tasks;
 
 namespace MainProgram
 {
-
-    public class RomanSettings
+    public class Settings
     {
-        public int casing { get; set; } = 1;
-        public string enclosure { get; set; } = ",";
+        public string seatsMatrix { get; set; } = "3,5";
+        public double moviePrice { get; set; } = 20D;
     }
 }
