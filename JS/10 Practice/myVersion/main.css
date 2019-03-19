@@ -84,7 +84,7 @@ body {
 
 #to-do-app .task input {
   height: 18px;
-  width: 18px;
+  width: 100%;
   margin-left: 16px;
 }
 

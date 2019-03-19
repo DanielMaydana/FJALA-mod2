@@ -57,6 +57,7 @@ export default class DataBase {
   }
 
   async removeTask(id) {
+    // throw "soy un error";
     try {
       const doc = await this.dataBase.get('list');
       if(doc.tasks) {
@@ -70,10 +71,11 @@ export default class DataBase {
   }
 
   async updateTask(payload) {
+    // throw "soy un error";
     try {
       const doc = await this.dataBase.get('list');
       if(doc.tasks) {
-        let task = doc.tasks.find(task => task.id === id);
+        let task = doc.tasks.find(task => task.id === payload.id);
         task.title = payload.title || task.title;
         task.isDone = payload.isDone;
       }
