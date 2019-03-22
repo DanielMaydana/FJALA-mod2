@@ -1,0 +1,15 @@
+Proyecto grupal:
+
+Requerimientos
+
+- Catalogo (llenar mediante CSV)
+- Reservas (solo en cuenta)
+- Reportes (pedidos por cliente / pedidos por cliente)
+- Estrenos
+- Cuenta
+
+Crear user stories en el backlog del proyecto.
+
+Investigar:
+- Querys a base de datos
+- 

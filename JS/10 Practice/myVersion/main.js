@@ -1,24 +1,48 @@
+import Entry from './Entry.js';
+import DataBase from './database.js';
+
+var myDatabase = new DataBase();
+const mainInput = document.getElementById('add-input');
+const mainDiv = document.getElementById('to-do-app');
+
+var i = 0;
+
+function refreshMainDiv(){
+    mainDiv.innerHTML = '';
+    var dbContent = myDatabase.getList();
+
+    dbContent.then(content=>{
+        content.map(dbElement => {
+
+            new Entry(dbElement);
+        });
+    }).catch();
+}
+
 (function(){
 
-    var mainInput = document.querySelector('#add-input');
-    
+    refreshMainDiv();
+
     mainInput.addEventListener('blur', () => {
-        
-        console.log(mainInput.value);
-        var myEntry = new Entry(mainInput.value);
 
+        var newTask = {
+            title: mainInput.value,
+            isDone: false
+        };
+
+        mainInput.value = '';
+        
+        myDatabase.addTask(newTask).then(dbTask => {
+            
+            i++;
+            var newEntry = new Entry(dbTask);
+            if(i == 2)
+            {
+                refreshMainDiv();
+                i = 0;
+            }
+
+        });
+        
     });
-
 })();
-
-class Entry{
-    constructor(tittle){
-        
-        this.object = document.querySelector('#to-do-app');
-        this.divContent = document.createElement('div');
-        this.divContent.classList.add('task');
-        this.divContent.innerHTML = tittle;
-
-        this.object.appendChild(this.divContent);
-    }
-}
