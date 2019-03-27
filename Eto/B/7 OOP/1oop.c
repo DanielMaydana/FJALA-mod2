@@ -30,6 +30,44 @@ void show(struct Person* s)
     printf("%lu", s->birthYear);
 }
 
+typedef struct
+{
+    char* marca;
+    char* modelo;
+    size_t anio;
+
+}Carro;
+
+char* clone_str(const char* s)
+{
+    size_t len = strlen(s);
+    char* cc = (char*)malloc(len + 1);
+    memcpy(cc, s, len + 1);
+    return cc;
+}
+
+void carro_init(Carro* d, const char* marca, const char* modelo, size_t anio)
+{
+    d->anio = anio;
+    d->marca = clone_str(marca);
+    d->modelo = clone_str(modelo);
+}
+
+void carro_release(Carro* c)
+{
+    free(c->marca);
+    free(c->modelo);
+    free(c->anio);
+
+}
+
+void carro_print(const Carro* z)
+{
+    puts(z->marca);
+    puts(z->modelo);
+    printf("%d\n", z->anio);
+}
+
 int main()
 {
     // struct Person p;
@@ -45,11 +83,36 @@ int main()
 
     // -----------------------
 
-    struct Person f;
-    init(&f, "Alan", "Wake", 1995);
+    // struct Person f;
+    // init(&f, "Alan", "Wake", 1995);
 
-    puts((const char*)&f); // shows the first field of 'f'
-    puts(((const char*)&f) + 32); // shows the second field of 'f'
+    // puts((const char*)&f); // shows the first field of 'f'
+    // puts(((const char*)&f) + 32); // shows the second field of 'f'
+
+    // -----------------------
+
+    // Carro c;
+    // carro_init(&c, "VW", "Pets", 1967);
+    // carro_release(&c);
+
+    // -----------------------
+
+    Carro* cs = (Carro*)malloc(3*sizeof(Carro)); // Carro created in the heap
+    carro_init(cs, "VW", "Peta", 1966); // first Carro
+    carro_init(cs + 1, "Lamb", "Dice", 1923); // second Carro
+    carro_init(&cs[2], "Computer", "Stones", 1955); // third Carro
+
+    for(Carro* i = cs; i != cs + 3; i++)
+    {
+        carro_print(i);
+    }
+
+    for(Carro* i = cs; i != cs + 3; i++)
+    {
+        carro_release(i);
+    }
+
+
 
     puts("\nAlles gut");
 }

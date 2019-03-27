@@ -1,0 +1,10 @@
+:root{
+    --green1: #AFFF97;
+}
+
+.personpill-component{
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--green1);
+    font-family: Arial, Helvetica, sans-serif;
+}
