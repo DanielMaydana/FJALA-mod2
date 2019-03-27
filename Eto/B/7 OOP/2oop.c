@@ -42,8 +42,10 @@ void sal_print(const sal* ss)
 
 void sal_release(sal* ss)
 {
-    for(size_t i = 0; i < ss->n )
-    free(ss->items);
+    for(size_t i = 0; i < ss->n; i++)
+    {
+        free(ss->items[i]);
+    }
 }
 
 int main()
@@ -53,6 +55,8 @@ int main()
     sal_add(&x, "BRMC");
     sal_add(&x, "QOTSA");
     sal_print(&x);
+
+    free
 
     puts("Oll Korrekt");
 }

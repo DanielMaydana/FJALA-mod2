@@ -1,23 +1,20 @@
 
 import React from 'react';
 import MaterialIcon from 'material-icons-react';
-import './index.css';
+import './MyToolBar.css';
 
 function MyToolBar({tittle, actions}) {
+
+    var createdButtons = actions.map(element =>
+        <button key={element.id} onClick={element.onClick} className={element.position}>
+            <MaterialIcon icon={element.icon}/>
+        </button>
+    );
+
     return (
 
         <div className = "toolbar-component"> {tittle}
-        {( () => {
-            var createdButtons = [];
-            actions.forEach(element => {
-                createdButtons.push(
-                    <button key={element.id} onClick={element.onClick} className={element.position}>
-                        <MaterialIcon icon={element.icon}/>
-                    </button>
-                );
-            });
-            return createdButtons;
-        })()}
+            {createdButtons}
         </div>
     );
 }
