@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MyToolBar from './components/MyToolBar';
-import PeoplePicker from './components/PeoplePicker';
+import Form from './components/Form'
 import './App.css';
 
 class App extends Component {
@@ -43,7 +43,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MyToolBar tittle={this.state.bigName} actions={this.state.buttons} />
+        <MyToolBar tittle={this.state.bigName} actions={this.state.buttons}/>
+        <Form/>
       </div>
     );
   }

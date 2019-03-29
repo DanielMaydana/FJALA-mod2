@@ -30,6 +30,8 @@ void show(struct Person* s)
     printf("%lu", s->birthYear);
 }
 
+// --------------------------------------------------
+
 typedef struct
 {
     char* marca;
@@ -53,20 +55,22 @@ void carro_init(Carro* d, const char* marca, const char* modelo, size_t anio)
     d->modelo = clone_str(modelo);
 }
 
-void carro_release(Carro* c)
-{
-    free(c->marca);
-    free(c->modelo);
-    free(c->anio);
-
-}
-
 void carro_print(const Carro* z)
 {
     puts(z->marca);
     puts(z->modelo);
-    printf("%d\n", z->anio);
+    printf("%lu\n", z->anio);
 }
+
+void carro_release(Carro* c)
+{
+    free(c->marca);
+    free(c->modelo);
+    c->marca = c->modelo = NULL;
+    c->anio = 0;
+}
+
+// --------------------------------------------------
 
 int main()
 {
@@ -74,14 +78,14 @@ int main()
     // init(&p, "Omar", "Vera", 1978); // created in the stack
     // show(&p);
 
-    // -----------------------
+    // ----------------------------------------------
 
     // struct Person* p1 = (struct Person*)malloc(sizeof(struct Person)); // created in the heap
     // init(p1, "Dan", "Boom", 1874);
     // show(p1); // q is already a mem direction, no need for &
     // free(p1); // use always if malloc was previously used
 
-    // -----------------------
+    // ----------------------------------------------
 
     // struct Person f;
     // init(&f, "Alan", "Wake", 1995);
@@ -89,13 +93,13 @@ int main()
     // puts((const char*)&f); // shows the first field of 'f'
     // puts(((const char*)&f) + 32); // shows the second field of 'f'
 
-    // -----------------------
+    // ----------------------------------------------
 
     // Carro c;
     // carro_init(&c, "VW", "Pets", 1967);
     // carro_release(&c);
 
-    // -----------------------
+    // ----------------------------------------------
 
     Carro* cs = (Carro*)malloc(3*sizeof(Carro)); // Carro created in the heap
     carro_init(cs, "VW", "Peta", 1966); // first Carro
@@ -111,8 +115,6 @@ int main()
     {
         carro_release(i);
     }
-
-
 
     puts("\nAlles gut");
 }
