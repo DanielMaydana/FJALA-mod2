@@ -1,0 +1,111 @@
+html, body, .container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6C5B7B;
+  color: #fff;
+  flex-direction: column;
+  transition: all ease 0.5s;
+}
+
+.container #startButton,
+.container #datePicker {
+  border: 1px solid;
+  background: transparent;
+  color: #fff;
+  padding: 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  outline: 0;
+}
+
+.container #datePicker {
+  margin-bottom: 16px;
+}
+
+
+.container #startButton:hover {
+  background-color: #F67280;
+}
+
+.container #startButton:focus {
+  opacity: 0.8;
+}
+
+
+.container #startButton:active {
+  transform: scale(1.1);
+}
+
+
+
+.container .clock {
+  display: flex;
+}
+
+.container .labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .labels > div {
+  width: 96px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.container .labels div + div {
+  margin-left: 32px;
+}
+
+.container .clock .cube {
+  height: 64px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 32px;
+  padding: 16px;
+  border-radius: 16px;
+  transition: all ease 0.5s;
+  opacity: 0.7; 
+}
+
+.container .clock .cube.days {
+  background: #F67280;
+}
+
+.container .clock .cube.hours {
+  background: #F8B195;
+}
+
+.container .clock .cube.mins {
+  background: #C06C84;
+}
+
+.container .clock .cube.seconds {
+  background: #CD738D;
+}
+
+.container .clock .cube + .cube {
+  margin-left: 32px;
+}
+
+.container .clock .cube.animation {
+  transform: translateY(-8px);
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+

@@ -5,20 +5,25 @@
 // Not possible to use ptr arithmetic
 // It's a ptr to whatever
 typedef struct{
+
     void** elems;
     size_t n;
 
 }ptrarraylist;
 
 void ptr_init(ptrarraylist* p){
+
     p->elems = (void**)malloc(0);
     p->n = 0;
+
 }
 
 void ptr_add(ptrarraylist* p, void* e){
-    p->elems = (void**)realloc(p->elems, (p->n+1)*sizeof(void*));
-    p->elems[p->n+1] = e;
+
+    p->elems = (void**)realloc(p->elems, (p->n + 1)*sizeof(void*));
+    p->elems[p->n + 1] = e;
     p->n++;
+
 }
 
 void ptr_release(ptrarraylist* p){
@@ -33,15 +38,15 @@ int main()
     int n1 = 11; int n2 = 18; int n3 = 31;
 
     ptr_init(&p);
-    ptr_add(&p, &n2);
-    ptr_add(&p, &n1);
-    ptr_add(&p, &n3);
+    // ptr_add(&p, &n2);
+    // ptr_add(&p, &n1);
+    // ptr_add(&p, &n3);
 
-    size_t n = p.n;
-    for(size_t i = 0; i < n; i++)
-    {
-        printf("%d\n", (int*)p.elems[i]);
-    }
+    // for(size_t i = 0; i < p.n; i++)
+    // {
+    //     printf("%d\n", (int*)p.elems[i]);
+    // }
+
     puts("Alles gut");
 
     // -----------------------------------
@@ -58,5 +63,5 @@ int main()
 
     // -----------------------------------
 
-    ptr_release(&p);
+    // ptr_release(&p);
 }
