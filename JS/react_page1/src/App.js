@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ActionForm from './components/ActionForm';
-import MyToolBar from './components/MyToolBar';
 import Form from './components/Form';
 import MyButton from './components/MyButton';
+import MyToolBar from './components/MyToolBar';
+import ActionForm from './components/ActionForm';
+// import MyInput from './components/MyInput';
 import './App.css';
 
 class App extends Component {
@@ -69,7 +70,8 @@ class App extends Component {
         {/* <ActionForm actions={this.state.newActions}> */}
           {/* <Form/> */}
         {/* </ActionForm> */}
-        <MyButton onClick={()=>{}} name={'BRMC'} icon={'settings_power'} disabled={false} type={'default'} isLoading={false}/>
+        <MyButton onClick={()=>{}} name={'BRMC'} icon={'settings_power'} disabled={false} type={'warning'} isLoading={true}/>
+        <MyButton onClick={()=>{}} name={'QOTSA'} icon={'people'} disabled={false} type={'warning'} isLoading={false}/>
       </div>
     );
   }

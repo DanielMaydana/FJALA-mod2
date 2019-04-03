@@ -18,7 +18,7 @@ class App extends Component {
           position: 'left',
           icon: 'home',
           onClick: () => {
-            this.printButtonName('Home');
+            this.printButtonName('Home');a
           }
         }, {
           name: 'MyAccount',

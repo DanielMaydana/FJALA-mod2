@@ -1,0 +1,22 @@
+:root{
+    --darkGreen: #73ac6c
+}
+
+.avatar-component{
+    /* padding: 5%;
+    margin: 5%; */
+    float: left;
+    border-radius: 50%;
+    background-color: var(--darkGreen);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.avatar-component .round-identifier
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    line-height: 100%;
+    /* display: inline-block; */
+
+}
