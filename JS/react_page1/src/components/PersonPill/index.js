@@ -5,12 +5,6 @@ import './PersonPill.css';
 function PersonPill({id, src, name, size, actions, isActive}) {
 
     const style_A = {
-        width : 4.25*size + 'px',
-        height : 1.25*size + 'px',
-        borderTopLeftRadius : (size/2) + 'px',
-        borderBottomLeftRadius : (size/2) + 'px',
-        borderTopRightRadius : (size/2) + 'px',
-        borderBottomRightRadius : (size/2) + 'px'
     }
 
     const handler = () => {actions(id);}
@@ -20,7 +14,7 @@ function PersonPill({id, src, name, size, actions, isActive}) {
     if(isActive) addedClass = 'clicked';
 
     return (
-        <div className={`personpill-component ${addedClass}`} style={style_A} onClick={handler}>
+        <div className={`personpill-component ${addedClass}`} style={style_A} onClick={handler} size={size}>
             <Avatar src={src} name={name} size={size}/>
             <div className="personpill-text"><p>{name}</p></div>
         </div>

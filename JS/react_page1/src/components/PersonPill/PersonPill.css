@@ -1,16 +1,20 @@
 :root{
-    --green1: #dffbd7;
+    --green-not-selected: #daffcd;
+    --green-selected: #9acc87;
 }
 
-.personpill-component{
+.personpill-component {
     padding: 0px;
     margin: 10px;
     float: left;
-    background-color: var(--green1);
+    background-color: var(--green-not-selected);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.personpill-component .personpill-text{
+.personpill-component[class*="clicked"] {
+    background-color: var(--green-selected);
+}
+.personpill-component .personpill-text {
     
     width: 60%;
     float: left;
