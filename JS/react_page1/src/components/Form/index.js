@@ -32,28 +32,9 @@ class Form extends Component {
         };
         
     }
-    clickedPersons = (idToFind) => {
 
-        let _copyPeople = [...this.state.people];
-        let _copyPeopleSelection = [...this.state.peopleSelection];
-        let _foundId = _copyPeopleSelection.find((element) => element === idToFind);
-        
-        if(_foundId)
-        {
-            let _auxIndex = _copyPeopleSelection.indexOf(_foundId);
-            _copyPeopleSelection.splice(_auxIndex, 1);
-            _copyPeople.map(element => console.log(element.id + ' rose'));
-        }
-        else
-        {
-            _copyPeopleSelection.push(idToFind);
-        }
-        this.setState({
-            ...this.state,
-            peopleSelection : _copyPeopleSelection
-        });
-        console.log(_copyPeopleSelection);
-    }
+    
+
     render() {
         return (
             <div className="form-component">

@@ -1,24 +1,23 @@
-import React from 'react';
+import React from 'react'
 import Avatar from '../Avatar'
-import './PersonPill.css';
+import './PersonPill.css'
 
-function PersonPill({id, src, name, size, actions, isActive}) {
+function PersonPill ({ id, src, name, size, actions, isActive }) {
+  const style_A = {
+  }
 
-    const style_A = {
-    }
+  const handler = () => { actions(id) }
 
-    const handler = () => {actions(id);}
-    
-    let addedClass = '';
+  let addedClass = ''
 
-    if(isActive) addedClass = 'clicked';
+  if (isActive) addedClass = 'clicked'
 
-    return (
-        <div className={`personpill-component ${addedClass}`} style={style_A} onClick={handler} size={size}>
-            <Avatar src={src} name={name} size={size}/>
-            <div className="personpill-text"><p>{name}</p></div>
-        </div>
-    );
+  return (
+    <div className={`personpill-component ${addedClass}`} style={style_A} onClick={handler} size={size}>
+      <Avatar src={src} name={name} size={size} />
+      <div className='personpill-text'><p>{name}</p></div>
+    </div>
+  )
 }
 
-export default PersonPill;
+export default PersonPill
