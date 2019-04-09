@@ -25,7 +25,7 @@ int main()
         printf("Pos: %d\n", error[q]);
     }
 
-    printf("Pos100: %d\n", error[100]);
+    printf("Pos100: %d\n", error[14]);
 
     //-----------------------
 
@@ -39,5 +39,5 @@ int main()
 
     //-----------------------
 
-
+    puts("OK");
 }
