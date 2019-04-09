@@ -6,7 +6,7 @@ function IconButton ({ onClick, className, icon }) {
   return (
     <div className='iconbutton-component'>
       <button onClick={onClick} className={className}>
-        <MaterialIcon icon={icon} />
+        <MaterialIcon icon={icon}/>
       </button>
     </div>
   )

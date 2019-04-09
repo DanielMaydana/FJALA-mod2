@@ -6,6 +6,7 @@ import leah from '../../images/leah1.jpg'
 import rob from '../../images/rob1.jpg'
 import pete from '../../images/peter1.jpg'
 import jont from '../../images/jont1.jpg'
+import daveg from '../../images/daveg.jpg'
 
 class TeamCreator extends Component {
 
@@ -25,6 +26,11 @@ class TeamCreator extends Component {
                     id: 114289,
                     avatar: rob,
                     email: 'rbeen@hotmail.com',
+                    isActive: false
+                }, {
+                    name: 'David Gilmour',
+                    id: 985433,
+                    avatar: daveg,
                     isActive: false
                 }, {
                     name: 'Peter Hayes',
@@ -54,14 +60,14 @@ class TeamCreator extends Component {
                     onClick: this.onButtonClicked,
                     textButton: 'Save Team',
                     iconButton: 'save',
-                    typeButton: 'info',
+                    typeButton: 'warning',
                     isDisabled: false,
                     isLoading: false,
                 }, {
                     onClick: this.onButtonClicked,
-                    textButton: 'Save Team',
-                    iconButton: 'save',
-                    typeButton: 'warning',
+                    textButton: 'Settings',
+                    iconButton: 'settings',
+                    typeButton: 'info',
                     isDisabled: false,
                     isLoading: false,
                 }
@@ -105,7 +111,7 @@ class TeamCreator extends Component {
     render() {
 
         return (
-            <div className="App">Hate the taste
+            <div className="App">
                 <ActionForm actions ={this.state.actionButtons}>
                     <Form members={this.state.selectedPeople}
                             people={this.state.people}

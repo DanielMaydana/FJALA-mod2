@@ -18,8 +18,8 @@ function ActionForm ({ children, actions }) {
   )
   return (
     <div className='actionform-component'>
-      {_children}
-      {_buttons}
+      <div className="children-div">{_children}</div>
+      <div className="buttons-div"> {_buttons}</div>
     </div>
   )
 }

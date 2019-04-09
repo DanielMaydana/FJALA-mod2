@@ -12,7 +12,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      bigName: 'MyPlants v0.0',
+      bigName: 'Super Band Lineup',
       buttons: [
         {
           name: 'Home',
@@ -26,7 +26,7 @@ class App extends Component {
           name: 'MyAccount',
           id: Math.round(Math.random() * 1000),
           position: 'right',
-          icon: 'account_circle',
+          icon: 'people',
           onClick: () => {
             this.printButtonName('MyAccount')
           }
@@ -34,7 +34,7 @@ class App extends Component {
           name: 'Levels',
           id: Math.round(Math.random() * 1000),
           position: 'left',
-          icon: 'layers',
+          icon: 'library_music',
           onClick: () => {
             this.printButtonName('Levels')
           }
