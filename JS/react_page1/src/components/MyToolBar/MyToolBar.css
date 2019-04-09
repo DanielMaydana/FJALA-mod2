@@ -1,5 +1,5 @@
 :root{
-    --lightGreen: #C9FF8D;
+    --lightGreen: #467985;
 }
 
 .toolbar-component{
@@ -7,6 +7,12 @@
     height: 50px;
     line-height: 50px;
     background-color: var(--lightGreen);
+}
+
+.toolbar-component p {
+    color: white;
+    background: red;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 

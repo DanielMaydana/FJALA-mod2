@@ -4,7 +4,9 @@ import IconButton from '../IconButton'
 import './MyToolBar.css'
 
 function MyToolBar ({ tittle, actions }) {
+
   var createdButtons = actions.map(element =>
+    
     <IconButton key={element.id} className={element.position} onClick={element.onClick} icon={element.icon} />
   )
 
@@ -12,7 +14,7 @@ function MyToolBar ({ tittle, actions }) {
 
     <div className='toolbar-component'>
       {createdButtons}
-      {tittle}
+      <p>{tittle}</p>
     </div>
   )
 }

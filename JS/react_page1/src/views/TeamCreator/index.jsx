@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import Form from '../../components/MyForm'
 import ActionForm from '../../components/ActionForm'
 
+import leah from '../../images/leah1.jpg'
+import rob from '../../images/rob1.jpg'
+import pete from '../../images/peter1.jpg'
+import jont from '../../images/jont1.jpg'
+
 class TeamCreator extends Component {
+
     constructor(){
         super();
         this.state = {
@@ -10,23 +16,39 @@ class TeamCreator extends Component {
             selectedPeople : [],
             people : [
                 {
-                    name: 'Antonio Sanchez',
+                    name: 'Leah Shapiro',
                     id: 220048,
-                    avatar: 'https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png',
+                    avatar: leah,
                     isActive: false
                 }, {
-                    name: 'Gustavo Santaolalla',
+                    name: 'Robert Been',
                     id: 114289,
-                    email: 'lastofusmusic@gmail.com',
+                    avatar: rob,
+                    email: 'rbeen@hotmail.com',
                     isActive: false
                 }, {
-                    name: 'Michael Been',
+                    name: 'Peter Hayes',
                     id: 324444,
-                    email: 'cacodemon@gmail.com',
+                    avatar: pete,
+                    isActive: false
+                }, {
+                    name: 'Anthony Bourdain',
+                    id: 325454,
+                    email: 'abourdain@cnn.com',
+                    isActive: false
+                }, {
+                    name: 'Jon Theodore',
+                    id: 676744,
+                    avatar: jont,
+                    email: 'jtheodore@qotsa.com',
+                    isActive: false
+                }, {
+                    name: 'Yoko Kanno',
+                    id: 523488,
+                    email: 'catsinmars@cbbp.com',
                     isActive: false
                 }
             ],
-            
             actionButtons : [
                 {
                     onClick: this.onButtonClicked,
@@ -50,26 +72,26 @@ class TeamCreator extends Component {
     onPersonClicked = (idToFind) => {
 
         let _copyPeople = [...this.state.people];
-        let _copyPeopleSelection = [...this.state.selectedPeople];
-        let _foundId = _copyPeopleSelection.find((element) => element === idToFind);
+        let _copySelectedPeople = [...this.state.selectedPeople];
+        let _foundId = _copySelectedPeople.find((element) => element === idToFind);
         
         if(_foundId)
         {
-            let _auxIndex = _copyPeopleSelection.indexOf(_foundId);
-            _copyPeopleSelection.splice(_auxIndex, 1);
+            let _auxIndex = _copySelectedPeople.indexOf(_foundId);
+            _copySelectedPeople.splice(_auxIndex, 1);
             _copyPeople.map(element => 
                 console.log(element.id + ' rose'
             ));
         }
         else
         {
-            _copyPeopleSelection.push(idToFind);
+            _copySelectedPeople.push(idToFind);
         }
         this.setState({
             ...this.state,
-            selectedPeople : _copyPeopleSelection
+            selectedPeople : _copySelectedPeople
         });
-        console.log(_copyPeopleSelection);
+        // console.log(_copySelectedPeople);
     }
 
     onButtonClicked = (text) => {
