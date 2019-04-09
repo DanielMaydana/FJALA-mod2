@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-import Form from '../../components/Form'
-import ActionForm from '../../components/Form'
+import Form from '../../components/MyForm'
+import ActionForm from '../../components/ActionForm'
 
 class TeamCreator extends Component {
     constructor(){
         super();
         this.state = {
-            err_msg = "This is an error message",
+            err_msg : "This is an error message",
             selectedPeople : [],
             people : [
                 {
-                    name: "Antonio Sanchez",
-                    id: Math.round(Math.random() * 10000),
-                    avatar: "https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png",
+                    name: 'Antonio Sanchez',
+                    id: 220048,
+                    avatar: 'https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png',
                     isActive: false
                 }, {
-                    name: "Gustavo Santaolalla",
-                    id: Math.round(Math.random() * 10000),
-                    email: "engageme.demo1@gmail.com",
+                    name: 'Gustavo Santaolalla',
+                    id: 114289,
+                    email: 'lastofusmusic@gmail.com',
                     isActive: false
                 }, {
-                    name: "Michael Been",
-                    id: Math.round(Math.random() * 10000),
-                    email: "cacodemon@gmail.com",
+                    name: 'Michael Been',
+                    id: 324444,
+                    email: 'cacodemon@gmail.com',
                     isActive: false
                 }
             ],
             
-            actionButtons = [
+            actionButtons : [
                 {
                     onClick: this.onButtonClicked,
                     textButton: 'Save Team',
@@ -50,14 +50,16 @@ class TeamCreator extends Component {
     onPersonClicked = (idToFind) => {
 
         let _copyPeople = [...this.state.people];
-        let _copyPeopleSelection = [...this.state.peopleSelection];
+        let _copyPeopleSelection = [...this.state.selectedPeople];
         let _foundId = _copyPeopleSelection.find((element) => element === idToFind);
         
         if(_foundId)
         {
             let _auxIndex = _copyPeopleSelection.indexOf(_foundId);
             _copyPeopleSelection.splice(_auxIndex, 1);
-            _copyPeople.map(element => console.log(element.id + ' rose'));
+            _copyPeople.map(element => 
+                console.log(element.id + ' rose'
+            ));
         }
         else
         {
@@ -65,7 +67,7 @@ class TeamCreator extends Component {
         }
         this.setState({
             ...this.state,
-            peopleSelection : _copyPeopleSelection
+            selectedPeople : _copyPeopleSelection
         });
         console.log(_copyPeopleSelection);
     }
@@ -74,15 +76,23 @@ class TeamCreator extends Component {
         console.log(text);
     }
 
+    inputHandler = (text) => {
+        console.log('Input Handler ' + text);
+    }
+
     render() {
 
         return (
-            <div className="App">
-                <ActionForm accions = {accionsButton}>
-                <Form members={this.state.members} people={this.state.people} onChangePill={this.onChangePill} handlerInput={this.handlerInput}></FormComponent>
+            <div className="App">Hate the taste
+                <ActionForm actions ={this.state.actionButtons}>
+                    <Form members={this.state.selectedPeople}
+                            people={this.state.people}
+                            onPillChange={this.onPersonClicked}
+                            inputHandler={this.inputHandler}/>
                 </ActionForm>
             </div>
         );
-    } 
-
+    }
 }
+
+export default TeamCreator;

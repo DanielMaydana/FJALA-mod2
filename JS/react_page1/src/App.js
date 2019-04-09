@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Form from './components/Form'
+import Form from './components/MyForm'
 import MyButton from './components/MyButton'
 import MyToolBar from './components/MyToolBar'
 import ActionForm from './components/ActionForm'
 import MyInput from './components/MyInput'
-
 import AppRouter from './AppRouter/index'
+
 import './App.css'
 
 class App extends Component {
@@ -67,15 +67,8 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        {/* <MyToolBar tittle={this.state.bigName} actions={this.state.buttons}/> */}
-        <ActionForm actions={this.state.newActions}>
-          <Form />
-        </ActionForm>
-        <AppRouter />
-
-        <MyButton onClick={() => {}} name={'BRMC'} icon={'settings_power'} disabled={false} type={'warning'} isLoading />
-        <MyButton onClick={() => {}} name={'QOTSA'} icon={'people'} disabled={false} type={'warning'} isLoading={false} />
-        <MyInput onChange={() => {}} autoFocus={false} errorMessage={'Error Message'} label={'Name'} placeholder={'Enter name'} />
+        <MyToolBar tittle={this.state.bigName} actions={this.state.buttons} />
+        <AppRouter></AppRouter>  
       </div>
     )
   }
