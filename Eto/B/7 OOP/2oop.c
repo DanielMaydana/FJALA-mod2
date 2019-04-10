@@ -52,11 +52,7 @@ void sal_release(sal* ss)
     {
         free(ss->items[i]);
     }
-
-    int aux = 213;
-    int* ptr_s = &aux;
-
-    free(ptr_s);
+    free(ss->items);
 }
 
 int main()

@@ -80,9 +80,9 @@ int main()
 
     printf("%d\n", sizeof(Person)); // 32[const char*] + 32[const char*] + 4[size_t] = 68 bytes
 
-    printf("First field: %s\n", (const char*)&f); // shows the first field of 'f'
-    printf("Second field: %s\n", ((const char*)&f) + 32); // shows the second field of 'f'
-    printf("Third field: %lu\n", *((size_t*)(((char*) &f) + 64))); // shows the third field of 'f'
+    printf("First field: %s\n", (const char*)&f ); // shows the first field of 'f'
+    printf("Second field: %s\n", ((const char*)&f) + 32 ); // shows the second field of 'f'
+    printf("Third field: %lu\n", *((size_t*)(((char*) &f) + 64)) ); // ASK: why use (((char*) &f) + 64)
 
     // ----------------------------------------------
 
@@ -92,21 +92,21 @@ int main()
 
     // ----------------------------------------------
 
-    Car* cs = (Car*)malloc(3*sizeof(Car)); // Car created in the heap
+    // Car* cs = (Car*)malloc(3*sizeof(Car)); // Car created in the heap
 
-    carro_init(cs, "VW", "Peta", 1966); // first Car
-    carro_init(cs + 1, "Toyota", "Offroad", 1923); // second Car
-    carro_init(&cs[2], "BMW", "FancyCar", 1955); // third Car
+    // carro_init(cs, "VW", "Peta", 1966); // first Car
+    // carro_init(cs + 1, "Toyota", "Offroad", 1923); // second Car
+    // carro_init(&cs[2], "BMW", "FancyCar", 1955); // third Car
 
-    for(Car* i = cs; i != cs + 3; i++)
-    {
-        carro_print(i);
-    }
+    // for(Car* i = cs; i != cs + 3; i++)
+    // {
+    //     carro_print(i);
+    // }
 
-    for(Car* i = cs; i != cs + 3; i++)
-    {
-        carro_release(i);
-    }
+    // for(Car* i = cs; i != cs + 3; i++)
+    // {
+    //     carro_release(i);
+    // }
 
     // ----------------------------------------------
 

@@ -4,17 +4,17 @@
 #include <string.h>
 
 // node
-typedef struct declsllitem // struct DECLaration
+typedef struct decl_sllitem // struct DECLaration
 {
     int value;
-    struct declsllitem* next;
-}sllitem; // alias
+    struct decl_sllitem* next;
+}sll_node; // alias
 
-//list
+// list
 typedef struct
 {
-    sllitem* first;
-    sllitem* last;
+    sll_node* first;
+    sll_node* last;
 }sll;
 
 void sll_init(sll* p)
@@ -24,34 +24,38 @@ void sll_init(sll* p)
 
 void sll_add(sll* p, int n)
 {
-    sllitem* ni = (sllitem*)malloc(sizeof(sllitem)); // create new node
-    ni->value = n;
-    ni->next = NULL;
-    if(p->first == NULL)
-    {
-        p->first = p->last = ni;
-        return;
-    }
+    sll_node* new_node = (sll_node*)malloc(sizeof(sll_node)); // create new node
+    
+    new_node->value = n;
+    new_node->next = NULL;
 
-    p->last->next = ni;
-    p->last = ni;
+    if(p->first == NULL) p->first = p->last = new_node;
+    else
+    {
+        p->last->next = new_node;
+        p->last = new_node;
+    }
 }
 
 void sll_print(const sll* p)
 {
-    sllitem* aux = p->first;
-    while(aux){
+    sll_node* aux = p->first;
+
+    while(aux)
+    {
         printf("%d\n", aux->value);
         aux = aux->next;
-    }
-    
+    }    
 }
 
 void sll_release(sll* p)
 {
-    sllitem* aux = p->first;
-    while(aux){
-        sllitem* next = aux->next;
+    sll_node* aux = p->first;
+    
+    while(aux)
+    {
+        sll_node* next = aux->next;
+        printf("%p\n", next);
         free(aux);
         aux = next;
     }
@@ -63,7 +67,7 @@ int main()
     sll_init(&x);
     sll_add(&x, 14);
     sll_add(&x, 44);
-    sll_add(&x, 24);
+    // sll_add(&x, 24);
     sll_print(&x);
     sll_release(&x);
 
