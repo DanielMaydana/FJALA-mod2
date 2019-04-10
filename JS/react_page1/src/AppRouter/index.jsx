@@ -5,9 +5,9 @@ import TeamCreator from '../views/TeamCreator/index'
 function AppRouter () {
   return (
     <Router>
-      <Route exact path='/team/create' component={TeamCreator}/>
-      <Route exact path='/team/edit' component={TeamCreator}/>
-      <Route exact path='/team' component={TeamCreator}/>
+      <Route exact path='/team/create' component={TeamCreator} />
+      <Route exact path='/team/edit' component={TeamCreator} />
+      <Route exact path='/team' component={TeamCreator} />
     </Router>
   )
 }

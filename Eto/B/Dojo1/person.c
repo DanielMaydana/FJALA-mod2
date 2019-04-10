@@ -1,6 +1,7 @@
 #include "person.h"
 #include <string.h>
-
+#include <stdlib.h>
+#include <stdio.h>
 
 
 
@@ -14,7 +15,7 @@ person* create_person(const char* first_n,const char* last_n, size_t year)
     char* fn = (char*)(per + 1);
     char* ln = fn + name_len + 1;
 
-    memcpy(fn, first_n, name_len + 1);
+    memcpy(fn, first_n, name_len+1);
     memcpy(ln, last_n, last_len+1);
 
     per->first_name = fn;
@@ -22,8 +23,9 @@ person* create_person(const char* first_n,const char* last_n, size_t year)
     per->year = year;
 
     return per;
-}
 
+
+}
 void release_person(void* p)
 {
     free(p);

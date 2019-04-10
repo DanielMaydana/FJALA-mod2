@@ -1,11 +1,22 @@
-#include <stdio.h>
+#include "person.h"
+#include "bst.h"
+#include <stdlib.h>
 
-typedef struct
+int cmp_int(const void *a, const void *b)
 {
-    char* first_name;
-    char* last_name;
-    size_t year;
-} person;
+    return 0;
+}
+void release_int(void *b)
+{
+    free(b);
+}
+
+int* create_int(int n)
+{
+    int* new_n = (int*)malloc(sizeof(int));
+    *new_n = n;
+    return new_n;
+}
 
 
 
@@ -22,7 +33,8 @@ int main()
     bst_add(&b, create_int(12390484), create_person("albert", "einstein", 1889));
     bst_add(&b, create_int(78685894), create_person("stephen", "hawkings", 1953));
     bst_add(&b, create_int(97875567), create_person("peter", "gabriel", 1952));
-    
+    show_person(b.root->value);
+    /*
     int p = 97875567;
     void* peter = bst_find(&b, &p);
     show_person((person*) peter);
@@ -30,7 +42,5 @@ int main()
     puts("******");
 
     bst_iterate(&b, show_int, show_person);
-    bst_release(&b);
-
-
+    bst_release(&b); */
 }

@@ -52,7 +52,6 @@
     "standard": "^12.0.1",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.2",
-    "url-loader": "1.1.2",
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
@@ -121,5 +120,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "url-loader": "^1.1.2"
   }
 }

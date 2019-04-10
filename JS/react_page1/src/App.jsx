@@ -12,11 +12,11 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      bigName: 'MyPlants v0.0',
+      bigName: 'Super Band Lineup',
       buttons: [
         {
           name: 'Home',
-          id: Math.random(),
+          id: Math.round(Math.random() * 1000),
           position: 'left',
           icon: 'home',
           onClick: () => {
@@ -24,17 +24,17 @@ class App extends Component {
           }
         }, {
           name: 'MyAccount',
-          id: Math.random(),
+          id: Math.round(Math.random() * 1000),
           position: 'right',
-          icon: 'account_circle',
+          icon: 'people',
           onClick: () => {
             this.printButtonName('MyAccount')
           }
         }, {
           name: 'Levels',
-          id: Math.random(),
+          id: Math.round(Math.random() * 1000),
           position: 'left',
-          icon: 'layers',
+          icon: 'library_music',
           onClick: () => {
             this.printButtonName('Levels')
           }
@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <div className='App'>
         <MyToolBar tittle={this.state.bigName} actions={this.state.buttons} />
-        <AppRouter></AppRouter>  
+        <AppRouter />
       </div>
     )
   }
