@@ -3,13 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct strarrlist
+typedef struct strarr_list
 {
     char** items;
     size_t n;
-};
-
-typedef strarrlist sal;
+}sal;
 
 void sal_init(sal* s)
 {
@@ -17,19 +15,27 @@ void sal_init(sal* s)
     s->n = 0;
 }
 
+// char* clone_str(const char* s)
+// {
+//     size_t len = strlen(s);
+//     char* r = (char*)malloc(len + 1);
+//     memcpy(r, s, len + 1);
+
+//     return r;
+// }
+
 char* clone_str(const char* s)
 {
     size_t len = strlen(s);
-    char* r = (char*)malloc(len + 1);
-    memcpy(r, s, len + 1);
-    return r;
+    char* c = (char*)malloc(sizeof(char)*(len + 1));
+    memcpy(c, s, len + 1);
+    return c;
 }
 
 void sal_add(sal* ss, const char* s)
 {
-    char* cc = clone_str(s); //returns a char* in the heap
     ss->items = (char**)realloc(ss->items, sizeof(char*)*(ss->n + 1));
-    ss->items[ss->n + 1] = cc;
+    ss->items[ss->n++] = clone_str(s);
 }
 
 void sal_print(const sal* ss)
@@ -42,10 +48,15 @@ void sal_print(const sal* ss)
 
 void sal_release(sal* ss)
 {
-    for(size_t i = 0; i < ss->n; i++)
+    for(size_t i = 0; i < (ss->n); i++)
     {
         free(ss->items[i]);
     }
+
+    int aux = 213;
+    int* ptr_s = &aux;
+
+    free(ptr_s);
 }
 
 int main()
@@ -55,8 +66,7 @@ int main()
     sal_add(&x, "BRMC");
     sal_add(&x, "QOTSA");
     sal_print(&x);
+    sal_release(&x);
 
-    free
-
-    puts("Oll Korrekt");
+    puts("\nAlles gut");
 }

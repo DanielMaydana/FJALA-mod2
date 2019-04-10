@@ -37,17 +37,20 @@ int main()
 
     const char* h = "Miles";
     const char* hh = " Smiles";
-    size_t lenh = strlen(h);
-    size_t lenhh = strlen(hh);
-    printf("Len: %d\n", lenh);
+    
+    size_t len_h = strlen(h);
+    size_t len_hh = strlen(hh);
 
-    char* ss = (char*)malloc((lenh + lenhh + 1)*sizeof(char)); // +1 for the null character '\0'
+    printf("Lengths: h - %d, hh -%d\n", len_h, len_hh);
 
-    strcpy(ss, h); // copies each byte until it finds the null termination
-    // strcpy(ss + lenh, hh); // more efficient than strcat
-    memccpy(ss + lenh, hh, lenhh + 1); // copies from to blocks of bytes
-    // strcat(ss, hh);
+    char* ss = (char*)malloc((len_h + len_hh + 1)*sizeof(char)); // +1 for the null character '\0'
 
+    // strcat(ss, hh); // the least efficient way to copy the char
+    // strcpy(ss, h); // copies each byte until it finds the null termination
+    // strcpy(ss + len_h, hh); // more efficient than strcat
+    
+    memcpy(ss, h, len_h);
+    memcpy(ss + len_h, hh, len_hh + 1); // copies from-to blocks of bytes
     puts(ss);
     free(ss);
 
