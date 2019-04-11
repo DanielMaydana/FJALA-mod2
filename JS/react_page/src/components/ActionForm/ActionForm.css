@@ -1,0 +1,11 @@
+.actionform-component .children-div {
+    width: 100%;
+    display: inline-block;
+    background: var(--toolbar-background-pastel);
+    border-bottom: 1px solid var(--toolbar-background);
+}
+
+.actionform-component .buttons-div {
+    width: 100%;
+    display: inline-block;
+}

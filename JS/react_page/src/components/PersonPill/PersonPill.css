@@ -1,0 +1,64 @@
+:root{
+    --pill-not-selected: #82ce9fb9;
+    --pill-background-selected: #7ac295;
+    --pill-border-selected: #4c9769;
+    --pill-font: #616161;
+}
+
+.personpill-component {
+
+    padding: 0px;
+    margin: 10px;
+    width: 340px;
+    height: inherit;
+    border-radius: 85px;
+    float: left;
+    background-color: var(--pill-not-selected);
+    display: flex;
+    justify-content: center;
+    box-sizing:border-box;
+    border: 5px ridge transparent;
+}
+
+.personpill-component:hover {
+
+    cursor: pointer;
+}
+
+.personpill-component[class*="clicked"] {
+
+    background-color: var(--pill-background-selected);
+    border: 5px outset var(--pill-border-selected);
+
+}
+
+.personpill-component .personpill-text {
+    
+    width: 55%;
+    margin: auto;
+    float: right;
+    margin-right: 20px;
+    
+    font-size: 25px;
+    text-align: left;
+    font-family: sans-serif;
+    user-select: none;
+    color: var(--pill-font);
+}
+
+.personpill-component[class*="clicked"] .personpill-text {
+    animation: font-color-change;
+    
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: ease-in-out; 
+    animation-fill-mode: both;
+}
+
+@keyframes font-color-change {
+    0% { color: #616161; }
+    33% { color: #7e7e7e; }
+    66% { color: #b9b9b9; }
+    100% { color: #ffffff; }
+}
