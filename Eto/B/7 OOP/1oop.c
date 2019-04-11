@@ -2,43 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Person
-{
-    char name[32];
-    char lastname[32];
-    size_t birthYear;
-};
-
 typedef struct
 {
-    char marca[32];
-    char model[32];
+    char* brand;
+    char* model;
     size_t year;
-} Car;
 
-void init(struct Person* h, const char* n, const char* ln, size_t y)
-{
-    strcpy(h->name, n);
-    strcpy(h->lastname, ln);
-    h->birthYear = y; // Not needed with primitives
-}
-
-void show(struct Person* s)
-{
-    puts(s->name);
-    puts(s->lastname);
-    printf("%lu", s->birthYear);
-}
-
-// --------------------------------------------------
-
-typedef struct
-{
-    char* marca;
-    char* modelo;
-    size_t anio;
-
-}Carro;
+}Car;
 
 char* clone_str(const char* s)
 {
@@ -48,73 +18,97 @@ char* clone_str(const char* s)
     return cc;
 }
 
-void carro_init(Carro* d, const char* marca, const char* modelo, size_t anio)
+void carro_init(Car* d, const char* brand, const char* model, size_t year)
 {
-    d->anio = anio;
-    d->marca = clone_str(marca);
-    d->modelo = clone_str(modelo);
+    d->year = year;
+    d->brand = clone_str(brand);
+    d->model = clone_str(model);
 }
 
-void carro_print(const Carro* z)
+void carro_print(const Car* z)
 {
-    puts(z->marca);
-    puts(z->modelo);
-    printf("%lu\n", z->anio);
+    printf("%s, %s - %lu\n", z->brand, z->model, z->year);
 }
 
-void carro_release(Carro* c)
+void carro_release(Car* c)
 {
-    free(c->marca);
-    free(c->modelo);
-    c->marca = c->modelo = NULL;
-    c->anio = 0;
+    free(c->brand);
+    free(c->model);
+    c->brand = c->model = NULL;
+    c->year = 0;
 }
 
 // --------------------------------------------------
 
+struct Person 
+{
+    char name[32];
+    char lastn[32];
+    size_t year;
+    float fx;
+};
+
+void init_pers(struct Person* p, const char* n, const char* ln, size_t y)
+{
+    strcpy(p->name, n);
+    strcpy(p->lastn, ln);
+    p->year = y;
+}
+
+void show_pers(struct Person* p)
+{
+    printf("%s, %s - %lu\n", p->name, p->lastn, p->year);
+}
+
 int main()
 {
     // struct Person p;
-    // init(&p, "Omar", "Vera", 1978); // created in the stack
-    // show(&p);
+    // init_pers(&p, "Omar", "Vera", 1978); // created in the stack
+    // show_pers(&p);
 
     // ----------------------------------------------
 
-    // struct Person* p1 = (struct Person*)malloc(sizeof(struct Person)); // created in the heap
-    // init(p1, "Dan", "Boom", 1874);
-    // show(p1); // q is already a mem direction, no need for &
-    // free(p1); // use always if malloc was previously used
+    // struct Person* p_heap = (Person*)malloc(sizeof(struct Person)); // created in the heap
+    // init_pers(p_heap, "Daniel", "Boom", 1874);
+    // show_pers(p_heap); // q is already a mem direction, no need for &
+    // free(p_heap); // always if malloc was previously used
 
     // ----------------------------------------------
 
-    // struct Person f;
-    // init(&f, "Alan", "Wake", 1995);
+    struct Person f;
+    init_pers(&f, "Alan", "Wake", 1995);
 
-    // puts((const char*)&f); // shows the first field of 'f'
-    // puts(((const char*)&f) + 32); // shows the second field of 'f'
+    printf("%d\n", sizeof(Person)); // 32[const char*] + 32[const char*] + 4[size_t] = 68 bytes
+
+    printf("First field: %s\n", (const char*)&f ); // shows the first field of 'f'
+    printf("Second field: %s\n", ((const char*)&f) + 32 ); // shows the second field of 'f'
+    printf("Third field: %lu\n", *((size_t*)(((char*) &f) + 64)) ); // ASK: why use (((char*) &f) + 64)
 
     // ----------------------------------------------
 
-    // Carro c;
-    // carro_init(&c, "VW", "Pets", 1967);
+    // Car c; // no need for writing 'struct' as we used an alias
+    // carro_init(&c, "VW", "Peta", 1967);
     // carro_release(&c);
 
     // ----------------------------------------------
 
-    Carro* cs = (Carro*)malloc(3*sizeof(Carro)); // Carro created in the heap
-    carro_init(cs, "VW", "Peta", 1966); // first Carro
-    carro_init(cs + 1, "Lamb", "Dice", 1923); // second Carro
-    carro_init(&cs[2], "Computer", "Stones", 1955); // third Carro
+    // Car* cs = (Car*)malloc(3*sizeof(Car)); // Car created in the heap
 
-    for(Carro* i = cs; i != cs + 3; i++)
-    {
-        carro_print(i);
-    }
+    // carro_init(cs, "VW", "Peta", 1966); // first Car
+    // carro_init(cs + 1, "Toyota", "Offroad", 1923); // second Car
+    // carro_init(&cs[2], "BMW", "FancyCar", 1955); // third Car
 
-    for(Carro* i = cs; i != cs + 3; i++)
-    {
-        carro_release(i);
-    }
+    // for(Car* i = cs; i != cs + 3; i++)
+    // {
+    //     carro_print(i);
+    // }
+
+    // for(Car* i = cs; i != cs + 3; i++)
+    // {
+    //     carro_release(i);
+    // }
+
+    // ----------------------------------------------
 
     puts("\nAlles gut");
 }
