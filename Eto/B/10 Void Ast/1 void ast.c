@@ -15,7 +15,6 @@ void ptr_init(ptrarraylist* p){
 
     p->elems = (void**)malloc(0);
     p->n = 0;
-
 }
 
 void ptr_add(ptrarraylist* p, void* e){
