@@ -7,12 +7,12 @@
 
 int cmp_int(const void *a, const void *b)
 {
-    return *((int*) b) - *((int*) a);
+    return *((int *)b) - *((int *)a);
 }
 
 int cmp_string(const void *a, const void *b)
 {
-    return strcmp (((char*) a) , ((char*) b));
+    return strcmp(((char *)a), ((char *)b));
 }
 
 // ------------REALEASE------------
@@ -22,24 +22,25 @@ void release_int(void *b)
     free(b);
 }
 
-int* create_int(int n)
+int *create_int(int n)
 {
-    int* new_n = (int*)malloc(sizeof(int));
+    int *new_n = (int *)malloc(sizeof(int));
+
     *new_n = n;
     return new_n;
 }
 
-char* create_string(const char* str)
+char *create_string(const char *str)
 {
-    size_t len = strlen(str) +1;
-    char* new_str = (char*)malloc(len);    
-    memcpy(new_str,str,len);
+    size_t len = strlen(str) + 1;
+    char *new_str = (char *)malloc(len);
+    memcpy(new_str, str, len);
     return new_str;
 }
 
-void show_int(const void* b)
+void show_int(const void *b)
 {
-    printf("%d\n", *((int*)b));
+    printf("%d\n", *((int *)b));
 }
 
 //-------------------------MAIN-------------------------
@@ -58,10 +59,10 @@ int main()
     bst_add(&b, create_int(78685894), create_person("stephen", "hawkings", 1953));
     bst_add(&b, create_int(97875567), create_person("peter", "gabriel", 1952));
     show_person(b.root->value);
-    
+
     int p = 348234455;
-    void* peter = bst_find(&b, &p);
-    show_person((person*) peter);
+    void *peter = bst_find(&b, &p);
+    show_person((person *)peter);
 
     puts("***********");
 
@@ -70,11 +71,12 @@ int main()
 
     // ----------------------------------
 
-    // bst b_str;
-    // bst_init(&b_str, cmp_string, free, free);
+    bst b_str;
+    bst_init(&b_str, cmp_string, free, free);
 
-    // bst_add(&b_str, create_string("boys"), create_string("muchachos"));
-    // bst_add(&b_str, create_string("kits"), create_string("nose"));
-    // bst_add(&b_str, create_string("black"), create_string("negro"));
-    // void* kit = bst_find(&b_str,"bys");
+    bst_add(&b_str, create_string("boys"), create_string("muchachos"));
+    bst_add(&b_str, create_string("kits"), create_string("nose"));
+    bst_add(&b_str, create_string("black"), create_string("negro"));
+
+    void *kit = bst_find(&b_str, "bys");
 }

@@ -1,12 +1,11 @@
-#include <stdio.h> 
+#include <stdio.h>
 #include <cstdlib>
-
 // ARRAYS
 // Viven en el stack, son de tamaño fijo
 // Se pueden transformar a punteros y viceversa
 // Punteros y arrays se manejan de la misma manera
 
-int main() 
+int main()
 {
     // int b[] = {7, 3, 1};
     // const int sizeC = 5;
@@ -41,7 +40,7 @@ int main()
     int *e = d; // puntero al primer elemento del array
     // se transforma automaticamente
     // se aplica aritmetica a 'e', no a 'd'
-    for(int i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
         printf("Aritmetica de ptr: %d\n", *e);
         e++;
@@ -50,16 +49,15 @@ int main()
 
     int whatever = 32;
 
-    void** m = (void*)malloc(sizeof(void));
+    void **m = (void *)malloc(sizeof(void));
 
-    m* = &whatever;
+    m * = &whatever;
 
-    int* h = (int*)m;
+    int *h = (int *)m;
 
     printf("%p\n", e);
     printf("%p\n", &m);
     // printf("%d\n", (int)(*m));
-
 }
 
 // void showArray(int toShow[3])
