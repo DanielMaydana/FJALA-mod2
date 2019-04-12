@@ -8,6 +8,7 @@
 int main()
 {
     FILE* f = fopen("days.txt", "w");
+    
     const char* days[] = {"lunes", "martes", "miercoles", "jueves", "viernes"};
     
     if (f == NULL) return -4;

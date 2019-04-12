@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void do_something(void(*p)(int, int, void*), int a, int b, void* c)
+typedef void(*PTR_FUNC)(int, int, void*);
+
+void do_something(PTR_FUNC funct, int a, int b, void* c)
 {
     puts("hi");
-    p(a, b, c);
-    puts("bye");
+    funct(a, b, c);
+    puts("bye\n");
 }
 
 // -------------------------------
@@ -21,8 +23,10 @@ void subst(int a, int b, void* c)
 {
     printf("%d\n", a - b);
     // void(*proc)() = c; // C way
-    void(*proc)() = (void(*)())c; // C++ way
-    proc();
+    // void(*proc)() = (void(*)())c; // C++ way
+    // proc();
+
+    ((void(*)())c)(); // my way
 }
 
 // -------------------------------
@@ -34,6 +38,6 @@ void sayEnd()
 
 int main()
 {
-    do_something(addit, 4, 5, (char*)"---");
+    do_something(addit, 4, 5, (char*)"***");
     do_something(subst, 14, 6, (void*)sayEnd);
 }

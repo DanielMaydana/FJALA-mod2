@@ -20,7 +20,7 @@ int main()
 
     for(size_t i = 0; i < p_size; i++ )
     {
-        printf("%d\n", p[i]);
+        printf("%d\t", p[i]);
     }
 
 }

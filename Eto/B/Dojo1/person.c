@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 
-
 person* create_person(const char* first_n,const char* last_n, size_t year)
 {
     size_t name_len = strlen(first_n);

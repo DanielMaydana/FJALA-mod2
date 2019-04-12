@@ -3,9 +3,9 @@
 #include <string.h>
 #include <stdarg.h>
 
-void print_item(int c, const char* d, double p, FILE* f)
+void print_item(int c, const char* d, double p, FILE* file)
 {
-    fprintf(f, "%5d %-16s %8.2f %8.2f\n", c, d, p, p*c);
+    fprintf(file, "%5d %-16s %8.2f %8.2f\n", c, d, p, p*c);
 }
 
 void print_wherever(const int* cs, const char** ds, const double* ps, size_t n, FILE* f)
@@ -14,7 +14,6 @@ void print_wherever(const int* cs, const char** ds, const double* ps, size_t n, 
     {
         print_item(cs[i], ds[i], ps[i], f);
     }
-
 }
 
 int main()

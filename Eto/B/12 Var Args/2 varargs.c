@@ -25,8 +25,10 @@ void my_print(const char* s, ...)
 
 int main()
 {
-    int p = 4; int q = 6;
-    const char* n = "num";
+    int n1 = 4;
+    int n2 = 6;
+    
+    const char* s = "days";
 
-    my_print("ISIS", p, n, q, "hola");
+    my_print("ISIS", n1, s, n2, "mark");
 }

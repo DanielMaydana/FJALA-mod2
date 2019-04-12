@@ -7,14 +7,16 @@ int main()
 {
     // puts("Enter 2 numbers");
     // int a = 0, b = 0;
+
     // size_t x = scanf("%d %d", &a, &b);
     // printf("Validity: %lu\n", x); // informs how many parameters it was able to scan
     // printf("The result is %d\n", a + b);
 
     // ------------------------------
-    
+
     // puts("Enter 3 numbers");
     // int a2 = 0, b2 = 0, c2 = 0;
+
     // scanf("%d : %d : %d", &a2, &b2, &c2);
     // printf("%d\n", a2 + b2 + c2);
 
@@ -27,19 +29,19 @@ int main()
 
     // ------------------------------
 
-    // const char* buffer = "10:20:30";
-    // int a = 0, b =0, c = 0;
+    const char* buffer = "10:20:30";
+    int a = 0, b =0, c = 0;
 
-    // sscanf(buffer, "%d:%d:%d", &a, &b, &c); // for reading chars in the memory
-    // printf("%d\n", a + b + c);
+    sscanf(buffer, "%d:%d:%d", &a, &b, &c); // for reading chars in the memory
+    printf("%d\n", a + b + c);
 
-    // const char* pi = "3.141592";
-    // double pid;
+    const char* pi = "3.141592";
+    double pid;
 
-    // sscanf(pi, "%lf", &pid);
-    // printf("%g\n", pid * 2);
+    sscanf(pi, "%lf", &pid);
+    printf("%g\n", pid * 2);
 
     // ------------------------------
 
-    
+    puts("Alles gut");
 }

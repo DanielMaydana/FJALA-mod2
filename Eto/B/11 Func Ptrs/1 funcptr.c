@@ -4,6 +4,8 @@
 // FUNCTION POINTERS
 // Uses: Events, Behaviour Injection, Callbacks
 
+typedef int (*PTR_FUNC)(int, int);
+
 int sum(int a, int b)
 {
     return a + b;
@@ -16,9 +18,11 @@ int max(int x, int y)
 
 int main()
 {
-    int(*ptrf)(int, int); // int[return type] (*ptr)[variable name] (int, int)[types of parameters]
+    // int(*ptrf)(int, int); // int[return type] (*ptr)[variable name] (int, int)[types of parameters]
+    PTR_FUNC ptrf;
     ptrf = sum; // this ptr can store the address to any dunction with the same signature
-    printf("%d\n", ptr(18, 45));
+    printf("%d\n", ptrf(18, 45));
+
     ptrf = max;
-    printf("%d\n", ptr(1, 200));
+    printf("%d\n", ptrf(1, 200));
 }
