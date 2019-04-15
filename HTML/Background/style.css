@@ -68,6 +68,7 @@
 
     background-image: url('ms_jump.png');
     background-size: 1000%;
+    image-rendering: pixelated;
     background-repeat: no-repeat;
     background-position: -110px -915px;
 
