@@ -1,0 +1,189 @@
+:root {
+    --vert-menu-width: 220px;
+    --font-size: 14px;
+    --border-width: 0.5px;
+    --logo-side-length: 50px; 
+
+
+    --color-strong-1: ; 
+}
+
+html, body {
+    height: 100%; width: 100%;
+    padding: 0; margin: 0;
+    overflow: hidden;
+
+    font-size: var(--font-size);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.menu-vert {
+    height: 100%;
+    width: var(--vert-menu-width);
+    background: #535559;
+    color: white;
+    float: left;
+}
+
+.menu-vert {
+    height: var(--logo-side-length);
+    margin: 0;
+    color: black;
+    /* background-color: black; */
+}
+
+.menu-vert .logo {
+
+    display: flex;
+    justify-content: center;
+}
+
+.menu-vert .logo img {
+
+    width: var(--logo-side-length);
+    height: var(--logo-side-length);
+}
+
+/* ---------MENU_VERT--------- */
+/* ----------PROF_PICTURE---------- */
+
+.menu-vert .profile-picture {
+    width: var(--vert-menu-width);
+    height: var(--vert-menu-width);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.menu-vert .profile-picture img{
+    border-radius: var(--vert-menu-width);
+    height: 90%;
+    width: 90%;
+}
+
+.menu-vert .username {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.menu-vert .email {
+    display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+}
+
+/* ----------MENU_VERT---------- */
+/* ----------MENU_ENTRIES---------- */
+
+.menu-vert .menu-entries {
+    width: 100%;
+    height: calc(100% - var(--vert-menu-width));
+    display: inline-block;
+    vertical-align: top;
+
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: center;  */
+}
+
+.menu-vert .menu-entries i {
+    font-size: 20px;
+    display: inline;
+}
+
+.menu-vert .menu-entries div {
+    /* font-size: 20px; */
+    display: inline;
+}
+
+.menu-vert .menu-entries ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}    
+
+.menu-vert .menu-entries ul li {
+    display: block;
+    width: 100%;
+    padding: 0px 15px;
+    line-height: calc(var(--font-size) + 20px);
+    border: #a1a2a3 var(--border-width) solid;
+    position: relative;
+}
+
+.menu-vert .menu-entries ul li:hover {
+    background: #a8a8a8;
+    cursor: pointer;
+}
+
+.menu-vert .menu-entries ul li ul {
+    display: none;
+    position: absolute;
+    background: #a8a8a8;
+    top: 0;
+    right: -100%;
+}
+
+.menu-vert .menu-entries ul li:hover ul {
+    display: block;
+
+}
+.menu-vert .menu-entries ul li ul li {
+    background: #808182;
+    width: 100%;
+    position: relative;
+
+}
+.menu-vert .menu-entries ul li ul li:hover {
+    background: #cecece;
+    width: 100%;
+}
+
+.container {
+    width: calc(100% - var(--vert-menu-width));
+    height: 100%;
+    background: #e2e2e2;
+    float: left;
+    overflow: auto;
+}
+
+.container div{
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+/* 
+.container .left {
+    width: 30%;
+    float: left;
+    background: yellow;
+    height: 100%;
+}
+
+.container .center {
+    width: 40%;
+    float: left;
+    background: blue;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.container .right {
+    width: 30%;
+    float: left;
+    background: red;
+    height: 100%;
+}
+
+.container .center .post {
+    width: 100%;
+    height: 150px;
+    border: 1px dotted white;
+} */

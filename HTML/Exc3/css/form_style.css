@@ -1,9 +1,0 @@
-form{
-    border: solid 1px;
-    padding: 5px;
-    display: inline-block;
-}
-
-form > input {
-    margin: 5px;
-} 

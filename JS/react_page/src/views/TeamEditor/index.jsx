@@ -3,12 +3,9 @@ import Form from '../../components/MyForm'
 import ActionForm from '../../components/ActionForm'
 import { GetTeam } from '../../Services/Rest.jsx'
 
-
 import leah from '../../images/leah1.jpg'
 import rob from '../../images/rob1.jpg'
 import pete from '../../images/peter1.jpg'
-import jont from '../../images/jont1.jpg'
-import daveg from '../../images/daveg.jpg'
 
 class TeamEditor extends Component {
 

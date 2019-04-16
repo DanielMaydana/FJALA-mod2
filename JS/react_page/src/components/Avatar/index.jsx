@@ -11,10 +11,10 @@ var getInitials = function (text) {
   return initials
 }
 
-function Avatar ({ src, name, size }) {
+function Avatar({ src, name, size }) {
   var initials = name ? getInitials(name) : ''
 
-  const avatarImage = <img className='thumbnail' src={src} />
+  const avatarImage = <img className='thumbnail' src={src} alt={name} />
   const avatarInitials = <div className='thumbnail'><p>{initials}</p></div>
 
   const style_size = {
