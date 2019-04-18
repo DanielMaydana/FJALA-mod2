@@ -67,7 +67,7 @@ html, body {
     width: 90%;
     border-radius: var(--image-side);
 
-    /* background-color: skyblue;     */
+    background-color: skyblue;    
 }
 
 /* ------------GAME_MENU------------ */
