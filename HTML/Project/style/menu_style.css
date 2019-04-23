@@ -5,10 +5,10 @@
 
     /* ______COLORS______ */
 
-    --body-color-A: #f07993;
-    --body-color-B: #f1a3b4;
-    --body-color-C: #8fadf0;
-    --body-color-D: #a8c3fc;
+    --body-color-A: #2a327c;
+    --body-color-B: #6d3b5c;
+    --body-color-C: #a2a2c7;
+    --body-color-D: #7b7b99;
 }
 
 html, body {
@@ -20,7 +20,9 @@ html, body {
     display: flex;
     justify-content: center;
 
-    background: var(--body-color-A);
+    /* background: var(--body-color-A); */
+    background-image: url('/images/menu/menu_stars.jpg');
+    background-size: cover;
 }
 
 * {
@@ -45,7 +47,10 @@ html, body {
 
 .welcome-menu .game-title {
     width: 100%;
+    height: 320px;
     font-size: 75px;
+    background-image: url('/images/menu/menu_title.png');
+    background-size: 100% 100%;
 
     /* background: red; */
 }
@@ -58,16 +63,20 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* background-color: blue; */
+    opacity: 0.7;
+    background-color: #423d3d;
+    border-radius: var(--image-side);
 }
 
 .welcome-menu .game-picture .picture-animation {
-    height: 90%;
-    width: 90%;
-    border-radius: var(--image-side);
 
-    background-color: skyblue;    
+    background: blue;
+    height: 100%;
+    width: 100%;
+    /* background-image: url('/images/menu/menu_ship.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center; */
 }
 
 /* ------------GAME_MENU------------ */
@@ -75,6 +84,9 @@ html, body {
 .welcome-menu .game-menu {
     user-select: none;
     font-size: var(--game-menu-font-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     /* background-color: green; */
 }
@@ -83,15 +95,20 @@ html, body {
     margin: 0;
     padding: 0;
     list-style: none;
+    width: 80%;
 }
 
 .welcome-menu .game-menu ul li {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* width: 90%; */
+    border: 7px solid #b17f2e;
+    border-radius: 10px;
     margin: calc(var(--game-menu-icon-size) / 5);
     padding: calc(var(--game-menu-icon-size) / 5);
-    background: var(--body-color-B);
+    /* background: var(--body-color-B); */
+    background: transparent;
 }
 
 .welcome-menu .game-menu ul li:hover { 
