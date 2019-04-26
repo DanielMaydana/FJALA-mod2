@@ -1,14 +1,5 @@
 :root {
-    --image-side: 500px;
-    --game-menu-icon-size: 50px;
-    --game-menu-font-size: 25px;
-
     /* ______COLORS______ */
-
-    --body-color-A: #2a327c;
-    --body-color-B: #6d3b5c;
-    --body-color-C: #a2a2c7;
-    --body-color-D: #7b7b99;
 }
 
 html, body {
@@ -16,13 +7,10 @@ html, body {
     width: 100%;
     padding: 0;
     margin: 0;
-    overflow: hidden;
     display: flex;
     justify-content: center;
-
-    /* background: var(--body-color-A); */
-    background-image: url('/images/menu/menu_stars.jpg');
     background-size: cover;
+    font-family: Helvetica;
 }
 
 * {
@@ -31,112 +19,127 @@ html, body {
 
 /* ------------GENERAL------------ */
 
-.welcome-menu {
+.welcome-screen {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    font-family: Helvetica;
-    color: white;
+    background-image: url('/images/menu/menu_stars.jpg');
+}
 
-    /* background: yellow; */
+.welcome-screen .welcome-menu {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: red; */
 }
 
 /* ------------GAME_TITLE------------ */
 
 .welcome-menu .game-title {
     width: 100%;
-    height: 320px;
-    font-size: 75px;
+    height: 250px;
     background-image: url('/images/menu/menu_title.png');
-    background-size: 100% 100%;
-
-    /* background: red; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: green; */
 }
 
 /* ------------GAME_PICTURE------------ */
 
-.welcome-menu .game-picture {
-    height: var(--image-side);
-    width: var(--image-side);
+.welcome-menu .game-ship {
+    width: 100%;
+    height: 250px;
+    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
-    opacity: 0.7;
-    background-color: #423d3d;
-    border-radius: var(--image-side);
+    /* background-color: blue; */
 }
 
-.welcome-menu .game-picture .picture-animation {
-
-    background: blue;
-    height: 100%;
+.welcome-menu .game-ship .picture {
     width: 100%;
-    /* background-image: url('/images/menu/menu_ship.png');
-    background-size: 100% 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('/images/menu/menu_ship.png');
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; */
+    background-position: center;
+    z-index: 10;
+}
+
+.welcome-menu .game-ship .background {
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100px;
+    background-color: #8f3737d7;
+    opacity: 0.8;
+    z-index: 0;
 }
 
 /* ------------GAME_MENU------------ */
 
-.welcome-menu .game-menu {
-    user-select: none;
-    font-size: var(--game-menu-font-size);
+.welcome-menu .game-start {
+    width: 350px;
+    height: 100px;
+    border: solid 5px #ffda35;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    /* background-color: green; */
-}
-
-.welcome-menu .game-menu ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 80%;
-}
-
-.welcome-menu .game-menu ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* width: 90%; */
-    border: 7px solid #b17f2e;
-    border-radius: 10px;
-    margin: calc(var(--game-menu-icon-size) / 5);
-    padding: calc(var(--game-menu-icon-size) / 5);
-    /* background: var(--body-color-B); */
+    justify-content: space-evenly;
     background: transparent;
+    user-select: none;
+    cursor: pointer;
 }
 
-.welcome-menu .game-menu ul li:hover { 
-    background: var(--body-color-D);
-    animation: hover-game-menu-entry;
-    animation-duration: 0.2s;
-    animation-direction: forwards;
+.game-start .start-text {
+    color: white;
+    font-size: 40px;
+}
+
+.game-start img {
+    filter: brightness(0) invert(1);
+    width: 65px;
+    height: 65px;
+}
+
+.welcome-menu .game-start:hover {
+    cursor: pointer;
+    animation-name: on-button-hover;
+    animation-timing-function: ease;
+    animation-duration: 0.4s;
     animation-fill-mode: forwards;
 }
 
-.welcome-menu .game-menu ul li:active { 
-    font-size: calc(var(--game-menu-font-size) + 7px);
-    background: var(--body-color-C);
-}
-
-.welcome-menu .game-menu ul li div {
-    margin-left: calc(var(--game-menu-icon-size) / 3);
-}
-
-.welcome-menu .game-menu ul li img {
-    filter: brightness(0) invert(1);
-    width: var(--game-menu-icon-size);
-    height: var(--game-menu-icon-size);
+.welcome-menu .game-start:active {
+    animation-name: on-button-click;
+    animation-timing-function: ease;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
 }
 
 /* ------------KEYFRAMES------------ */
 
-@keyframes hover-game-menu-entry {
-    0% { font-size: var(--game-menu-font-size); }
-    100% { font-size: calc(var(--game-menu-font-size) + 7px); }
+@keyframes on-button-hover {
+    from {
+        background: transparent;
+    }
+    to {
+        background: #002e9985;
+    }
+}
+
+@keyframes on-button-click {
+    from {
+        width: 350px;
+        background: #002e9985;        
+    }
+    to {
+        width: 380px;
+        background: #002e9985;
+    }
 }

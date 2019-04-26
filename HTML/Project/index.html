@@ -6,38 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/style/menu_style.css">
+    <link rel="stylesheet" href="/style/gameplay_style.css">
+    <link rel="stylesheet" href="/style/game_ship_style.css">
+
     <title>Document</title>
 </head>
 
 <!-- https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame -->
 
 <body>
-    <div class="welcome-menu">
-        <div class="game-title"></div>
-        <div class="game-picture">
-            <div class="picture-animation"></div>
+    <!-- <div class="welcome-screen">
+        <div class="welcome-menu">
+            <div class="game-title"></div>
+            <div class="game-ship">
+                <div class="picture"></div>
+                <div class="background"></div>
+            </div>
+            <div class="game-start" onclick="hideMenu()">
+                <img src="./images/icons/sight.png" />
+                <div class="start-text">START</div>
+            </div>
         </div>
-        <div class="game-menu">
-            <ul id="vert-list">
-                <li>
-                    <img src="./images/icons/sight.png" />
-                    <div>START</div>
-                </li>
-                <li>
-                    <img src="./images/icons/medal.png" />
-                    <div>ACHIEVEMENTS</div>
-                </li>
-                <li>
-                    <img src="./images/icons/trophy.png" />
-                    <div>TOP SCORES</div>
-                </li>
-                <li>
-                    <img src="./images/icons/settings.png" />
-                    <div>SETTINGS</div>
-                </li>
-            </ul>
-        </div>
+    </div> -->
+
+    <div class="gameplay" onkeydown="getKeyAndMove(event)">
+        <div class="background"></div>
+        <div class="message"></div>
+        <div class="score"></div>
+        <div class="ship center"></div>
     </div>
+
+    </div>
+    <script src="/main.js"></script>
 </body>
 
 </html>

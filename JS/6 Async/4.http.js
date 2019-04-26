@@ -18,14 +18,6 @@ function getUsers() {
   });
 }
 
-
-
-
-
-
-
-
-
 function getUsersAndRepos() {
   const promises = [];
   promises.push(axios.get('https://api.github.com/users'));
@@ -42,20 +34,12 @@ function getUsersAndRepos() {
   })
 }
 
-
-
-
-
 async function asyncGetUsers() {
   const response = await axios.get('https://api.github.com/users');
   users = response.data;
   console.log('numero de usuarios es ', users.length);
   //error handling???
 }
-
-
-
-
 
 async function asyncGetUsersAndRepos() {
   const usersResponse = await axios.get('https://api.github.com/users');

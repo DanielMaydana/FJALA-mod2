@@ -1,0 +1,26 @@
+.button-component {
+    align-items: center;
+    width: 70px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    outline: none;
+    background: #82ee99;
+    color: rgb(98, 98, 98);
+    border: none;
+}
+
+
+.button-component:hover {
+    box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.75);
+    transition: 0.5s;
+}
+
+.button:disabled {
+    background: #bbbbbb;
+    color: #555151fa;
+    box-shadow: none;
+}
+
