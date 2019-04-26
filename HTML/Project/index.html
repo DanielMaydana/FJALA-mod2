@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="/style/gameplay_style.css">
     <link rel="stylesheet" href="/style/game_ship_style.css">
 
-    <title>Document</title>
-</head>
+    <!-- <img class="ship" src="/images/game/xwing.png" style="display: none"> -->
+
+</header>
 
 <!-- https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame -->
 
 <body>
-    <!-- <div class="welcome-screen">
+    <div class="welcome-screen">
         <div class="welcome-menu">
             <div class="game-title"></div>
             <div class="game-ship">
@@ -27,17 +28,18 @@
                 <div class="start-text">START</div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <div class="gameplay" onkeydown="getKeyAndMove(event)">
         <div class="background"></div>
         <div class="message"></div>
         <div class="score"></div>
-        <div class="ship center"></div>
+        <canvas class="game-canvas"></canvas>
     </div>
 
-    </div>
-    <script src="/main.js"></script>
+    <script src="/scripts/Xwing.js"></script>
+    <script src="/scripts/Meteor.js"></script>
+    <script src="/scripts/main.js"></script>
 </body>
 
 </html>

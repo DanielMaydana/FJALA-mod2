@@ -6,11 +6,16 @@
     z-index: 0;
 }
 
-.gameplay .message {
-    width: 500px;
-    height: 150px;
-    background: green;
-    display: none;
+.gameplay .score {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    font-weight: bold;
+    font-size: 45px;
 }
 
 .gameplay .background {
@@ -20,12 +25,18 @@
     top: 0;
     left: 0;
     opacity: 0.85;
-    background-image: url('/images/menu/menu_stars.jpg');
+    background-image: url('/images/menu/menu_stars2.jpg');
     background-repeat: repeat;
     background-position: 0 0;
-    background-size: auto 100%;
+    background-size: 100% 100%;
     animation: animatedBackground 200s linear infinite;
 }   
+
+.game-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 
 @keyframes animatedBackground {
     from {
