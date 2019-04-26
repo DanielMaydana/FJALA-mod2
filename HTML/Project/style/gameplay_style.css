@@ -1,8 +1,8 @@
 .gameplay {
     height: 100%;
     width: 100%;
-    /* display: none; */
-    display: block;
+    display: none;
+    /* display: block; */
     z-index: 0;
 }
 
