@@ -1,0 +1,145 @@
+:root {
+    /* ______COLORS______ */
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    font-family: Helvetica;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ------------GENERAL------------ */
+
+.welcome-screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: url('/images/menu/menu_stars.jpg');
+}
+
+.welcome-screen .welcome-menu {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: red; */
+}
+
+/* ------------GAME_TITLE------------ */
+
+.welcome-menu .game-title {
+    width: 100%;
+    height: 250px;
+    background-image: url('/images/menu/menu_title.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: green; */
+}
+
+/* ------------GAME_PICTURE------------ */
+
+.welcome-menu .game-ship {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* background-color: blue; */
+}
+
+.welcome-menu .game-ship .picture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('/images/menu/menu_ship.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+}
+
+.welcome-menu .game-ship .background {
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100px;
+    background-color: #8f3737d7;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+/* ------------GAME_MENU------------ */
+
+.welcome-menu .game-start {
+    width: 350px;
+    height: 100px;
+    border: solid 5px #ffda35;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: transparent;
+    user-select: none;
+    cursor: pointer;
+}
+
+.game-start .start-text {
+    color: white;
+    font-size: 40px;
+}
+
+.game-start img {
+    filter: brightness(0) invert(1);
+    width: 65px;
+    height: 65px;
+}
+
+.welcome-menu .game-start:hover {
+    cursor: pointer;
+    animation-name: on-button-hover;
+    animation-timing-function: ease;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.welcome-menu .game-start:active {
+    animation-name: on-button-click;
+    animation-timing-function: ease;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+/* ------------KEYFRAMES------------ */
+
+@keyframes on-button-hover {
+    from {
+        background: transparent;
+    }
+    to {
+        background: #002e9985;
+    }
+}
+
+@keyframes on-button-click {
+    from {
+        width: 350px;
+        background: #002e9985;        
+    }
+    to {
+        width: 380px;
+        background: #002e9985;
+    }
+}

@@ -1,0 +1,62 @@
+:root {
+    --ship-height: 250px;
+    --ship-width: 200px;
+}
+
+.gameplay .ship {
+    width: var(--ship-width);
+    height: var(--ship-height);
+    background-color: red;
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    background: url("/images/game/xwing.png");
+    background-size:1200px 250px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-position: -490px 0px;
+    background-color: yellowgreen;
+    z-index: 10;
+}
+
+.gameplay .ship.center {
+    animation-name: ship-standing-still;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: step-end;
+    background-position: -490px 0px;
+}
+
+.gameplay .ship.left-turn {
+    animation-name: ship-turning-left;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-end;
+    background-position: -490px 0px;
+}
+
+.gameplay .ship.right-turn {
+    animation-name: ship-turning-right;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-end;
+    background-position: -490px 0px;
+}
+
+@keyframes ship-standing-still {
+    0% { background-size:1200px 250px; }
+    50% { background-size:1205px 255px; }
+    100% { background-size:1200px 250px; }
+}
+
+@keyframes ship-turning-left {
+    0% { background-position: -490px 0px; }
+    50% { background-position: -230px 0px; }
+    100% { background-position: 0px 0px; }
+}
+
+@keyframes ship-turning-right {
+    0% { background-position: -490px 0px; }
+    50% { background-position: -740px 0px; }
+    100% { background-position: -980px 0px; }
+}

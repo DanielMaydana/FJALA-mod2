@@ -1,0 +1,27 @@
+.dropdown {
+    border:none;
+    border-bottom: 1px solid #F28B0C;
+    color:black;
+    padding: 6px;
+    padding-left: 0px;
+    font-size: 14px;
+    outline: none;
+}
+
+.element-dropdown {
+    color: #385059;
+}
+
+.dropdown option:first-child {
+    display: none;
+}
+
+.dropdown-component label {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #999999;
+}
+
+.dropdown-component {
+    padding: 10px 10px 10px 0px;
+}

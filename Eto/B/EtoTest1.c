@@ -53,7 +53,6 @@ void sl_populate(string_list *sl, int n_words, ...)
 
     for (size_t i = 0; i < n_words; i++)
     {
-        // puts();
         sl_add(sl, va_arg(arg_list, char *));
     }
 
@@ -62,14 +61,35 @@ void sl_populate(string_list *sl, int n_words, ...)
 
 void sl_join(string_list *sl, const char *tkn, char *c)
 {
-    for (size_t i = 0; i < sl->len; i++)
-    {
-        strcat(c, sl->elems[i]);
+    printf("Size : %d\n", sl->len);
+    int elem_len = 0;
+    int old_len = 0;
 
-        if ((i + 1) != sl->len)
-        {
-            strcat(c, tkn);
-        }
+    for (size_t i = 0; i < (sl->len); i++)
+    {
+        elem_len = strlen(sl->elems[i]);
+        printf("elem_len: %d\t", elem_len);
+        memcpy(c + old_len + 1, sl->elems[i], elem_len);
+        old_len += elem_len;
+
+        elem_len = strlen(tkn);
+        printf("elem_len: %d\t", elem_len);
+        printf("jump: %d\t", c + old_len + elem_len);
+
+        memcpy(c + old_len + elem_len, tkn, elem_len + 1);
+        old_len += elem_len;
+
+        // printf("Total len: %d\n", old_len);
+        // printf("Ptr addition: %d\n", c + old_len);
+
+        // strcpy(c + old_len + 1, c);
+
+        // if ((i + 1) != sl->len)
+        // {
+        //     strcat(c, tkn);
+        // }
+
+        puts(c);
     }
 }
 

@@ -1,0 +1,36 @@
+As a user I want to be able to get a ticket once I register my mail.
+
+DESCRIPTION
+
+The user will be shown a form with the following elements (the placing from top to bottomm, one below the previous):
+- A dropdown list containing the types of raffles.
+- A text input for the user so he can wirte his email.
+- A button with the label "Get Ticket" for the user to click on when he wants to get his ticket number.
+- A label field for the user to see his ticket number.
+
+UX steps:
+
+1. First the user should choose the type of raffle he wants to participate in, choosing one from the drop down list.
+2. Then he must write his email in the input field. This will be validated when the button is clicked on, so the mail has the following format: [name]@fundacion-jala.org
+Where the [name] could contain lower and uppercase letters only from A to Z.
+3. Then last When the user clicks on the "Get Ticket" button the input field will be validated.
+4. If the validation checks out, the user will see his ticket number in the label field and the button will be disabled.
+Otherwise he will get a error message saying "Incorrect email format" in the label field.
+
+TASKS
+
+Backend:
+
+- Create the frontend project using React.
+- Create the backend solution using Visual Studio.
+- Create the Services project and its classes. 
+- Create the ModelDTO project and its classes.
+- Create the BusinessLogic project and its classes.
+- Create the DataModel project and its classes.
+- Create the DataAccessLogic project and its classes.
+
+Frontend:
+
+- Implement the "Raffle" component.
+- Create the validate component.
+- Connect to the service using axios.
