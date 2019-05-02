@@ -30,14 +30,12 @@ Xwing.prototype.update = function() {
         this.posX -= (this.direction * 2 * this.speed);
     }
     
-    // console.log("")
-    
     
     if(enemy_meteor.posY > 85)
     {
-        if(enemy_meteor.posX > this.posX && (enemy_meteor.posX + 25) < (this.posX + 50))
-        {
+        if(enemy_meteor.posX > this.posX && (enemy_meteor.posX + 25) < (this.posX + 50)) {
             game_over = true;
+            window.location.reload();
         }
     }
     
