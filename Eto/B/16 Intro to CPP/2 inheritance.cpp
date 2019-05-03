@@ -1,38 +1,39 @@
 #include <string>
 using namespace std;
 
-class person
+class Person
 {
     string name;
     size_t id;
 
   public:
-    person(const string &name, size_t id) : name{name}, id{id}
+    Person(const string &name, size_t id) : name{name}, id{id}
     {
     }
 
-    ~person()
+    ~Person()
     {
-        puts("bye");
+        puts("Bye Person");
     }
 
     void print() const
     {
-        printf("(%lu) is %s", id, name.c_str());
+        printf("(%d) %s", id, name.c_str());
     }
 };
 
-class student : public person
+class Student : public Person
 {
     size_t score;
 
   public:
-    student(const string &name, size_t id, size_t score) : person{name, id}, score{score}
+    Student(const string &name, size_t id, size_t score) : Person{name, id}, score{score}
     {
     }
-    ~student()
+
+    ~Student()
     {
-        puts("bye student");
+        puts("Bye Student");
     }
 };
 
@@ -40,11 +41,11 @@ class student : public person
 
 int main()
 {
-    person p{"Eli", 43511222};
+    Person p{"Robert", 7233};
     p.print();
     puts("");
 
-    student s{"Nick", 5254245, 100};
+    Student s{"Jimmy", 5411, 100};
     s.print();
     puts("");
 }

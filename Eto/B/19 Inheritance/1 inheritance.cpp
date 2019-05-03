@@ -1,19 +1,19 @@
 #include <string>
 using namespace std;
 
-class person
+class Person
 {
     string name;
     size_t id;
 
   public:
-    person(const string &name, size_t id) : name{name}, id{id}
+    Person(const string &name, size_t id) : name{name}, id{id}
     {
     }
 
-    ~person()
+    ~Person()
     {
-        puts("bye person");
+        puts("bye Person");
     }
 
     void print() const
@@ -22,22 +22,22 @@ class person
     }
 };
 
-class student : public person
+class Student : public Person
 {
     size_t score;
 
   public:
-    student(const string &name, size_t id, size_t score) : person{name, id}, score{score}
+    Student(const string &name, size_t id, size_t score) : Person{name, id}, score{score}
     {
     }
-    ~student()
+    ~Student()
     {
-        puts("bye student");
+        puts("bye Student");
     }
 
     void print() // HIDING
     {
-        person::print();
+        Person::print();
         printf(" with a score of %lu", score);
     }
 };
@@ -46,11 +46,14 @@ class student : public person
 
 int main()
 {
-    person p{"Eli", 43511222};
-    p.print();
-    puts("");
+    // Person p{"Eli", 43511222};
+    // p.print();
+    // puts("");
 
-    student s{"Nick", 5254245, 100};
-    s.print();
-    puts("");
+    // Student s{"Nick", 5254245, 100};
+    // s.print();
+    // puts("");
+
+    Person *e = new Student{"Mordecai", 42442, 78};
+    e->print();
 }

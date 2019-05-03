@@ -15,15 +15,18 @@ class Student
         this->name = (char *)malloc(len + 1);
         memcpy(this->name, name, len + 1);
     }
+
     void print() const
     {
         printf("(%lu) %s\n", id, name);
     }
+
     ~Student()
     {
         printf("chau %s\n", name);
         free(name);
     }
+
     //constructor de copia
     Student(const Student &src)
         : id{src.id}
