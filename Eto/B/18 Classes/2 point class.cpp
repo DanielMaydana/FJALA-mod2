@@ -10,7 +10,7 @@ class point
     int x;
     int y;
 
-  public:
+public:
     point(int x = 0, int y = 0) : x{x}, y{y} // same as empty constructor with 'x = 0, y = 0'
     {
     }
@@ -22,7 +22,7 @@ class point
 
     void print_pnt() const
     {
-        printf("(%d,%d)\n", x, y);
+        printf("(%d, %d)\n", x, y);
     }
 
     void set_values(int x, int y)

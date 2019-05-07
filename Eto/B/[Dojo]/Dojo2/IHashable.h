@@ -6,7 +6,7 @@
 class IHashable : public Object
 {
   public:
-    virtual int getIhashcode() const = 0;
+    virtual int GetHashCode() const = 0;
 };
 
 #endif

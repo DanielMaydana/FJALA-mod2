@@ -6,7 +6,7 @@ class Person
     string name;
     size_t id;
 
-  public:
+public:
     Person(const string &name, size_t id) : name{name}, id{id}
     {
     }
@@ -26,7 +26,7 @@ class Student : public Person
 {
     size_t score;
 
-  public:
+public:
     Student(const string &name, size_t id, size_t score) : Person{name, id}, score{score}
     {
     }

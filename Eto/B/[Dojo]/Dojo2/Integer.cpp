@@ -15,7 +15,7 @@ bool Integer::equals(const Object &obj) const
     return e == nullptr ? false : n == e->n;
 }
 
-int Integer::getIhashcode() const
+int Integer::GetHashCode() const
 {
     return n;
 }

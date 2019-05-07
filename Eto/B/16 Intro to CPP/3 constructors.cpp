@@ -7,7 +7,7 @@ class Student
     size_t id;
     char *name;
 
-  public:
+public:
     Student(size_t id, const char *name)
         : id{id}
     {
@@ -54,7 +54,7 @@ class grupos_a_2
     Student a;
     Student b;
 
-  public:
+public:
     grupos_a_2(const Student &a, const Student &b)
         : a{a}, b{b}
     {

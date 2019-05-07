@@ -6,27 +6,15 @@ using namespace std;
 
 constexpr size_t MAX = 16;
 
-class ztring
+class Ztring
 {
     char *chars;
     char sso[MAX];
     size_t len;
 
-  public:
-    ztring(const char *s = "") : len{strlen(s)}
-    {
-        set_string(s);
-    }
-
-    ztring(const ztring &src) : len{src.len}
-    {
-        set_string(src.data());
-    }
-
-  private:
+private:
     void set_string(const char *s)
     {
-
         if (len >= MAX)
         {
             chars = (char *)malloc(len + 1);
@@ -38,13 +26,23 @@ class ztring
         }
     }
 
-  public:
+public:
+    Ztring(const char *s = "") : len{strlen(s)}
+    {
+        set_string(s);
+    }
+
+    Ztring(const Ztring &src) : len{src.len}
+    {
+        set_string(src.data());
+    }
+
     const char *data() const
     {
         return len < MAX ? sso : chars;
     }
 
-    ~ztring()
+    ~Ztring()
     {
         if (len >= MAX)
         {
@@ -52,21 +50,21 @@ class ztring
         }
     }
 
-    ztring &operator=(const ztring &src)
+    Ztring &operator=(const Ztring &src)
     {
         if (this == &src)
             return *this;
 
-        this->~ztring();
+        this->~Ztring();
         len = src.len;
         set_string(src.data());
         return *this;
     }
 
-    ztring operator+(const ztring &src) const //este const dice que el this no cambia
+    Ztring operator+(const Ztring &src) const //este const dice que el this no cambia
     {
         auto nlen = len + src.len;
-        ztring ns;
+        Ztring ns;
         ns.len = nlen;
 
         if (nlen >= MAX)
@@ -81,7 +79,7 @@ class ztring
         return ns;
     }
 
-    ztring &operator+=(const ztring &src) //este const dice que el this no cambia
+    Ztring &operator+=(const Ztring &src) //este const dice que el this no cambia
     {
         auto nlen = len + src.len;
 
@@ -109,20 +107,26 @@ class ztring
 
 int main()
 {
-    ztring s = "hola";
+    Ztring s = "hola";
     puts(s.data());
-    ztring r = "antonio jose de sucre";
+
+    Ztring r = "antonio jose de sucre";
     puts(r.data());
+
     auto p = r;
     puts(p.data());
+
     auto x = s;
     puts(x.data());
+
     p = "segmentation";
     puts(p.data());
-    ztring q = "fault";
+    Ztring q = "fault";
+
     auto result = p + " " + q;
     puts(result.data());
-    ztring concatenar = "today";
+
+    Ztring concatenar = "today";
     concatenar += " is123";
     concatenar += " tuesday";
     concatenar += " asdfg";

@@ -4,6 +4,8 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "stdarg.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "xstring": "cpp",
+        "xutility": "cpp"
     }
 }
