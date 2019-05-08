@@ -1,0 +1,68 @@
+.action-button-component {
+  position: relative;
+  display: inline-flex;
+  padding: 0 16px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  user-select: none;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  font-size: 16px;
+  outline: 0;
+  transition: all ease 0.3s;
+  width: 160px;
+}
+
+.action-button-component:focus {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.action-button-component.primary {
+  background: var(--accent-color);
+  color: var(--accent-text-color);
+}
+
+.action-button-component.primary .material-icons.md-dark {
+  color: var(--accent-text-color);
+}
+
+.action-button-component.default,
+.action-button-component.default .material-icons.md-dark {
+  color: var(--text-color);
+}
+
+.action-button-component i {
+  margin-right: 12px;
+}
+
+.action-button-component + .action-button-component {
+  margin-left: 12px;
+}
+
+.action-button-component:disabled {
+  filter: grayscale(100%);
+}
+
+.action-button-component.animate-icon .material-icons {
+  animation: debounce 1s ease infinite;
+}
+
+@keyframes debounce {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

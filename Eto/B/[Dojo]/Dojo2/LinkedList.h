@@ -16,6 +16,8 @@ struct LinkedList
     LinkedListNode *first;
     LinkedListNode *last;
     void add(IHashable *key, Object *value);
+    const Object &operator[](const IHashable &key) const;
+    void iterate(void (*funct)(const IHashable &h, const Object &val)) const;
 };
 
 #endif
