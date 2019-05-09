@@ -79,7 +79,8 @@ public:
         return ns;
     }
 
-    Ztring &operator+=(const Ztring &src) //este const dice que el this no cambia
+    //este const dice que el this no cambia
+    Ztring &operator+=(const Ztring &src)
     {
         auto nlen = len + src.len;
 
