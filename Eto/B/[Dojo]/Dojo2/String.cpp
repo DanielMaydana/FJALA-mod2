@@ -18,5 +18,11 @@ bool String::equals(const Object &obj) const
 
 int String::GetHashCode() const
 {
-    return 0;
+    const char *aux = str.c_str();
+    int r = 0;
+    while (*aux)
+    {
+        r += *(aux++) * 31 + 100;
+    }
+    return r;
 }

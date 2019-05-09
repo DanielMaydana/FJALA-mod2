@@ -13,11 +13,14 @@ struct LinkedListNode
 
 struct LinkedList
 {
+    LinkedList();
     LinkedListNode *first;
     LinkedListNode *last;
     void add(IHashable *key, Object *value);
+    void add(LinkedListNode *node);
     const Object &operator[](const IHashable &key) const;
     void iterate(void (*funct)(const IHashable &h, const Object &val)) const;
+    ~LinkedList();
 };
 
 #endif

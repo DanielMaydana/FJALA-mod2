@@ -28,29 +28,29 @@ int main()
     hm.add(new Integer(70), new String("setenta"));
 
     HashMap hm2;
-    for (size_t i = 0; i < 10'000'000; i++)
+    for (size_t i = 0; i < 1000'000; i++)
     {
         hm2.add(new String(std::to_string(i)), new Integer(i));
     }
     //hm2.iterate(show);
     puts("************");
     auto t0 = clock();
-    puts(hm2[String("9999999")].to_string().data());
+    puts(hm2[String("999999")].to_string().data());
     auto t1 = clock();
-    printf("%ld\n", (t1 - t0) / CLOCKS_PER_SEC);
+    printf("%lf\n", ((double)t1 - t0) / CLOCKS_PER_SEC);
 
-    // puts(hm[Integer(20)].to_string().data());
+    puts(hm[Integer(20)].to_string().data());
 
-    // try
-    // {
-    //     puts(hm[Integer(25)].to_string().data());
-    // }
-    // catch (const std::exception &e)
-    // {
-    //     puts(e.what());
-    // }
+    try
+    {
+        puts(hm[Integer(25)].to_string().data());
+    }
+    catch (const std::exception &e)
+    {
+        puts(e.what());
+    }
 
-    //     puts("******");
+    puts("******");
 
-    // hm.iterate(show);
+    hm.iterate(show);
 }

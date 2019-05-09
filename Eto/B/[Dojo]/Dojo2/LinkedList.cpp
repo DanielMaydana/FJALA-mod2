@@ -1,8 +1,12 @@
 #include "LinkedList.h"
 #include "HashMapException.h"
-void LinkedList::add(IHashable *key, Object *value)
+
+LinkedList::LinkedList()
+    : first{nullptr}, last{nullptr}
 {
-    auto nn = new LinkedListNode{nullptr, key, value};
+}
+void LinkedList::add(LinkedListNode *nn)
+{
     if (first == nullptr)
     {
         first = last = nn;
@@ -11,6 +15,12 @@ void LinkedList::add(IHashable *key, Object *value)
 
     last->next = nn;
     last = nn;
+}
+
+void LinkedList::add(IHashable *key, Object *value)
+{
+    auto nn = new LinkedListNode{nullptr, key, value};
+    add(nn);
 }
 
 const Object &LinkedList::operator[](const IHashable &key) const
@@ -34,5 +44,18 @@ void LinkedList::iterate(void (*funct)(const IHashable &h, const Object &val)) c
     {
         funct(*(aux->key), *(aux->value));
         aux = aux->next;
+    }
+}
+
+LinkedList::~LinkedList()
+{
+    // puts("Bye");
+    LinkedListNode *aux = first;
+
+    while (aux != nullptr)
+    {
+        LinkedListNode *auxNext = aux->next;
+        delete aux;
+        aux = auxNext;
     }
 }
