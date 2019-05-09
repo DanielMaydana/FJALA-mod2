@@ -5,12 +5,17 @@ import InputField from '../../components/InputField';
 import Toolbar from '../../components/Toolbar';
 import Task from '../../components/Task';
 import './todoList.css';
+import ScrollContainer from '../../components/ScrollContainer';
 
 class TodoList extends React.Component {
 	
 	componentDidMount() {
 		this.props.requestTasks();
 	}
+
+	onScrolled = (position) => {
+		console.log(position);
+	};
 
 	render() {
 		const { tasks, taskForm } = this.props;
@@ -24,13 +29,17 @@ class TodoList extends React.Component {
 					objectKey="title"
 					value={taskForm.title}
 				/>
-				{ tasks.map((task, index) => <Task
-						key={index}
-						index={index}
-						toggleDone={this.handleToggleDone}
-						title={task.title}
-						isDone={task.isDone}
-				/>)}
+				<ScrollContainer onScroll={this.onScrolled}>
+
+					{ tasks.map((task, index) => <Task
+							key={index}
+							index={index}
+							toggleDone={this.handleToggleDone}
+							title={task.title}
+							isDone={task.isDone}
+					/>)}
+
+				</ScrollContainer>
 			</div>
 		);
 	}

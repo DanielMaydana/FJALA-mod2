@@ -1,0 +1,8 @@
+.scrollcontainer-component {
+
+    height:150px;
+    width:100%;
+    border:1px solid #ccc; 
+    font:16px/26px Georgia, Garamond, Serif;
+    overflow:auto;
+}
