@@ -68,3 +68,9 @@ void HashMap::reHash()
     items = n_items;
     array_size = n_array_size;
 }
+bool HashMap::erase(const IHashable& key)
+{
+    int hc = key.GetHashCode();
+    int pos = hc % array_size;
+    return items[pos].erase(key);
+}

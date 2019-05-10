@@ -47,6 +47,61 @@ void LinkedList::iterate(void (*funct)(const IHashable &h, const Object &val)) c
     }
 }
 
+bool LinkedList::erase(const IHashable& key)
+{
+    if(first == nullptr) return false;
+    if(first == last)
+    {        
+        if (key.equals(*(first->key)))
+        {
+            delete first->key;
+            delete first->value;
+            delete first;
+            first = last = nullptr;
+            return true;
+        }
+        return false;
+    }
+
+    if (key.equals(*(first->key)))
+    {
+        LinkedListNode* aux  = first->next;
+        delete first->key;
+        delete first->value;
+        delete first;
+        first = aux;
+        return true;                
+    }
+    
+
+    LinkedListNode *auxA = first;
+
+    while (auxA->next != nullptr)
+    {
+        LinkedListNode *auxB = auxA->next;
+
+        if (key.equals(*(auxB->key)))
+        {   
+            auxA->next = auxB->next;
+
+            if(auxB->next == nullptr)
+            {
+                last = auxA;
+            }
+
+            delete auxB->key;
+            delete auxB->value;
+            delete auxB;
+            return true;
+        }
+
+        auxA = auxA->next;
+    }
+
+    return false;
+
+}
+
 LinkedList::~LinkedList()
 {
     // puts("Bye");
@@ -55,6 +110,8 @@ LinkedList::~LinkedList()
     while (aux != nullptr)
     {
         LinkedListNode *auxNext = aux->next;
+        delete aux->value;
+        delete aux->key;
         delete aux;
         aux = auxNext;
     }

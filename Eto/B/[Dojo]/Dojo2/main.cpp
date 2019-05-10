@@ -27,6 +27,13 @@ int main()
     hm.add(new Integer(60), new String("sesenta"));
     hm.add(new Integer(70), new String("setenta"));
 
+    hm.erase(Integer{60});
+    hm.erase(Integer{10});
+    hm.erase(Integer{30});
+    hm.erase(Integer{50});
+    hm.erase(Integer{40});
+    hm.erase(Integer{40});
+
     HashMap hm2;
     for (size_t i = 0; i < 1000'000; i++)
     {
