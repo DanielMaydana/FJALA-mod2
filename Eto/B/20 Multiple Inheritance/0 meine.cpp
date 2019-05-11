@@ -1,44 +1,28 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
 
-struct A
+struct Base
 {
-    A()
-    {
-        puts("A constructed");
-    }
-
-    int x;
+    int n;
 };
 
-struct B
+struct DerA : virtual Base
 {
-    B()
-    {
-        puts("B constructed");
-    }
-
-    int y;
 };
 
-struct Point : A, B
+struct DerB : virtual Base
 {
-    Point()
-    {
-        puts("Pnt constructed");
-    }
+};
 
-    void show()
-    {
-        printf("(%d, %d)\n", x, y);
-    }
+struct DerC : DerA, DerB
+{
 };
 
 int main()
 {
-    Point p;
-    p.x = 2;
-    p.y = 3;
-    p.show();
+    DerC grand_children;
+    grand_children.n = 3;
+
+    printf("%d\n", grand_children.n);
 }
