@@ -3,7 +3,7 @@
 
 class Object
 {
-  public:
+public:
     virtual std::string to_string() const
     {
         return std::to_string((long long)this);
@@ -21,22 +21,24 @@ class Integer : public Object
 {
     int n;
 
-  public:
-    int get() const
-    {
-        return n;
-    }
-    Integer(int n)
-        : n{n}
+public:
+    Integer(int n) : n{n}
     {
     }
+
     bool equals(const Object &src) const override
     {
         return n == static_cast<const Integer &>(src).n;
     }
+
     std::string to_string() const override
     {
         return std::to_string(n);
+    }
+
+    int get() const
+    {
+        return n;
     }
 };
 
@@ -44,15 +46,16 @@ class String : public Object
 {
     std::string str;
 
-  public:
-    String(const std::string &s)
-        : str{s}
+public:
+    String(const std::string &s) : str{s}
     {
     }
+
     bool equals(const Object &src) const override
     {
         return str == static_cast<const String &>(src).str;
     }
+
     std::string to_string() const override
     {
         return str;
@@ -92,7 +95,7 @@ struct Stack : public Object
         std::string s;
         for (int i = n - 1; i >= 0; i--)
         {
-            s += items[i]->to_string();
+            // s += items[i]->to_string();
             s += "\n";
         }
         return s;

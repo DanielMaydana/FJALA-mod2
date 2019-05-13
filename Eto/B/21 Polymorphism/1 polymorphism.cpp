@@ -107,34 +107,34 @@ void hacerAlgo(const Animal &a)
 
 int main()
 {
-    Person p{"Juann perez", 98898};
-    p.print();
-    puts(" ");
+    // Person p{"Juann perez", 98898};
+    // p.print();
+    // puts(" ");
 
-    Student s{"Pedro rojas", 223, 97};
-    s.print();
+    // Student s{"Pedro rojas", 223, 97};
+    // s.print();
 
-    Person *c = new Student("Omar", 456, 70);
-    c->print();
-    delete (c);
+    // Person *c = new Student("Omar", 456, 70);
+    // c->print();
+    // delete (c);
 
-    Student *h = new Student("Pedro rojas", 223, 97);
-    h->print();
-    delete h;
+    // Student *h = new Student("Pedro rojas", 223, 97);
+    // h->print();
+    // delete h;
 
-    puts("*****");
-    Person *e = new Student("pepito", 23, 2222);
-    e->print();
-    //((Student *)e)->print(); // Esta casteando
-    delete e;
+    // puts("*****");
+    // Person *e = new Student("pepito", 23, 2222);
+    // e->print();
+    // //((Student *)e)->print(); // Esta casteando
+    // delete e;
 
-    //auto p1= new Perro{};
+    auto p1 = new Perro{};
 
-    // Perro p;
-    // Vaca v;
+    Perro p;
+    Vaca v;
 
-    // hacerAlgo(p);
-    // hacerAlgo(v);
+    hacerAlgo(p);
+    hacerAlgo(v);
 
-    // return 0;
+    return 0;
 }
