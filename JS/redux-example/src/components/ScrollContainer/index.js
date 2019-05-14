@@ -4,31 +4,37 @@ import './scrollcontainer-style.css';
 
 function ScrollContainer({onScroll, children}) {
   
-  const [posX] = useState({x:0, y:0});
+  function handleScroll (e) {
 
+    onScroll(e.target.scrollTop);
+  };
 
-  // readScroll = (event) => {
-  //   const scrolldiv = document.querySelector('.scrollcontainer-component');
-  // }
-//   let last_known_scroll_position = 0;
-//   const scrollContainerRef = React.createRef();
+  const scrollRef = React.createRef();
 
-//   useEffect( () => {
+  useEffect( function componentDidMount() {
 
-//     scrollContainerRef.current.addEventListener('scroll', function(e) {
-      
-//       last_known_scroll_position = e.scrollY;
-//       onScroll(e);
-//       // console.log(last_known_scroll_position);
-  
-//   });
-// });
+    console.log('init');
+		scrollRef.current.addEventListener('scroll', handleScroll);
+		
+		return function componentWillUnMount() {
+
+      console.log('fail');
+			// scrollRef.current.removeEventListener('scroll', handleScroll);
+    }
+
+  });
 
   return (
-    <section className="scrollcontainer-component" ref={scrollContainerRef}>
+    <section className="scrollcontainer-component" ref={scrollRef}>
       {children}
     </section>
   );
+};
+
+ScrollContainer.defaultProps = {
+
+  onScroll: () => {},
+  children: null
 }
 
 export default ScrollContainer;
