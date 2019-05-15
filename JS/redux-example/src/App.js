@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import TodoList from './views/TodoList'
+import CreatePerson from './views/Person/CreatePerson';
+import UserList from './views/User/UserList';
 
-class App extends Component {
-  render() {
-
-    const REACT_VERSION = React.version;
-    console.log(REACT_VERSION);
-    return (
-      <div className="App">
-        <TodoList />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <UserList></UserList>
+      <CreatePerson></CreatePerson>
+    </div>
+  );
 }
 
 export default App;

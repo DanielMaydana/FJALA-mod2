@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'material-icons-react';
 import Ink from 'react-ink'
+import PropTypes from 'prop-types';
 import './actionButton.css';
 
 const BUTTON_TYPES = {
@@ -9,11 +10,15 @@ const BUTTON_TYPES = {
   default: 'default'
 };
 
-function ActionButton({text, type, icon, onClick, loading}) {
+/**
+Use our custom button styles for actions in forms, dialogs, and more.
+*/
+
+function ActionButton({text, type, icon, onClick, disabled}) {
   const buttonClass = BUTTON_TYPES[type];
-  const iconClass = loading ? 'animate-icon' : '';
+  
   return (
-    <button className={`action-button-component ${buttonClass} ${iconClass}`} onClick={onClick} disabled={loading}>
+    <button className={`action-button-component ${buttonClass}`} onClick={onClick} disabled={disabled} >
       <Ink />
       {icon && <Icon icon={icon} /> }
       <span>{text}</span>
@@ -25,6 +30,21 @@ ActionButton.defaultProps = {
   text: '',
   type: 'default',
   icon: null,
+  onClick: () => {},
+  disabled: false,
 };
+
+ActionButton.propTypes = {
+  /** The text on the button */
+  text: PropTypes.string,
+  /** The type of style of the button */
+  type: PropTypes.string,
+  /** The name of the icon class from material-icons */
+  icon: PropTypes.string,
+  /** The callback to execute when it's clicked-on */
+  onClick: PropTypes.func,
+  /** Enables or disables the button */
+  disabled: PropTypes.bool,
+}
 
 export default ActionButton;
