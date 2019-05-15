@@ -1,6 +1,11 @@
 #include <cstdio>
 #include <ctime>
 
+#include "Object.h"
+#include "IHashable.h"
+#include "String.h"
+#include "Integer.h"
+
 void show(const IHashable &h, const Object &val)
 {
     printf("%s %s\n", h.to_string().data(), val.to_string().data());
