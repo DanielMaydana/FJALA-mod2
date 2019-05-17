@@ -14,9 +14,16 @@ HashMap::HashMap(size_t array_size, double load_factor)
 void HashMap::add(IHashable *key, Object *value)
 {
     if (((double)element_count) / array_size > load_factor)
+    {
         reHash();
-    int hc = key->GetHashCode();
+    }
+    
+    size_t hc = key->GetHashCode();
     int pos = hc % array_size;
+
+    printf("HC %d | ARR_SZ %d\n", hc, array_size);        
+    printf("HC %d | POS %d\n", hc, pos);
+
     items[pos].add(key, value);
     element_count++;
 }
@@ -41,33 +48,38 @@ HashMap::~HashMap()
 {
     delete[] items;
 }
-void HashMap::relink(LinkedList *n_items, int n_array_size, LinkedList &linkedList)
+
+void HashMap::relink(LinkedList *new_items, int n_array_size, LinkedList &array_pos)
 {
-    LinkedListNode *aux = linkedList.first;
+    LinkedListNode *aux = array_pos.first;
     while (aux)
     {
         LinkedListNode *next = aux->next;
         aux->next = nullptr;
         int npos = aux->key->GetHashCode() % n_array_size;
-        n_items[npos].add(aux);
+        new_items[npos].add(aux);
         aux = next;
     }
-    linkedList.first = linkedList.last = nullptr;
+    array_pos.first = array_pos.last = nullptr;
 }
+
 void HashMap::reHash()
 {
     puts("REHASH");
     int n_array_size = array_size * 2 + 1;
 
-    LinkedList *n_items = new LinkedList[n_array_size];
+    LinkedList *new_items = new LinkedList[n_array_size];
+    
     for (size_t i = 0; i < array_size; i++)
     {
-        relink(n_items, n_array_size, items[i]);
+        relink(new_items, n_array_size, items[i]);
     }
+
     delete[] items;
-    items = n_items;
+    items = new_items;
     array_size = n_array_size;
 }
+
 bool HashMap::erase(const IHashable& key)
 {
     int hc = key.GetHashCode();

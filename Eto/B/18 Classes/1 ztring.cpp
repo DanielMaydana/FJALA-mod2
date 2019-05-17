@@ -9,7 +9,7 @@ constexpr size_t MAX = 16;
 class Ztring
 {
     char *chars;
-    char sso[MAX];
+    char sso[MAX]; // small string optimization
     size_t len;
 
 private:
@@ -32,6 +32,8 @@ public:
         set_string(s);
     }
 
+    // COPY CONSTR
+    // Ztring z1 = z2;
     Ztring(const Ztring &src) : len{src.len}
     {
         set_string(src.data());
@@ -50,11 +52,12 @@ public:
         }
     }
 
-    Ztring &operator=(const Ztring &src)
+    // ASSIGN OPERATOR
+    // z1 = z2;
+    Ztring &operator=(const Ztring &src) 
     {
         if (this == &src)
             return *this;
-
         this->~Ztring();
         len = src.len;
         set_string(src.data());
@@ -64,6 +67,7 @@ public:
     Ztring operator+(const Ztring &src) const //este const dice que el this no cambia
     {
         auto nlen = len + src.len;
+
         Ztring ns;
         ns.len = nlen;
 
@@ -73,9 +77,9 @@ public:
         }
 
         char *str = nlen < MAX ? ns.sso : ns.chars;
+
         memcpy(str, data(), len);
         memcpy(str + len, src.data(), src.len + 1);
-
         return ns;
     }
 
@@ -108,28 +112,28 @@ public:
 
 int main()
 {
-    Ztring s = "hola";
-    puts(s.data());
+    // Ztring s = "hola";
+    // puts(s.data());
 
-    Ztring r = "antonio jose de sucre";
-    puts(r.data());
+    // Ztring r = "antonio jose de sucre";
+    // puts(r.data());
 
-    auto p = r;
-    puts(p.data());
+    // auto p = r;
+    // puts(p.data());
 
-    auto x = s;
-    puts(x.data());
+    // auto x = s;
+    // puts(x.data());
 
-    p = "segmentation";
-    puts(p.data());
-    Ztring q = "fault";
+    Ztring p = "holly ";
+    Ztring q = "molly";
+    // puts(p.data());
 
-    auto result = p + " " + q;
+    auto result = p + q;
     puts(result.data());
 
-    Ztring concatenar = "today";
-    concatenar += " is123";
-    concatenar += " tuesday";
-    concatenar += " asdfg";
-    puts(concatenar.data());
+    // Ztring concatenar = "today";
+    // concatenar += " is123";
+    // concatenar += " tuesday";
+    // concatenar += " asdfg";
+    // puts(concatenar.data());
 }

@@ -37,7 +37,9 @@ void ptr_release(ptr_arrlist* p){
 
 int main()
 {
-    int n1 = 11; int n2 = 18; int n3 = 31;
+    int n1 = 11;
+    int n2 = 18;
+    int n3 = 31;
     ptr_arrlist f;
 
     ptr_init(&f, sizeof(int));

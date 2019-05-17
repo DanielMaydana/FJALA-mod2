@@ -5,6 +5,7 @@ LinkedList::LinkedList()
     : first{nullptr}, last{nullptr}
 {
 }
+
 void LinkedList::add(LinkedListNode *nn)
 {
     if (first == nullptr)
@@ -40,6 +41,7 @@ const Object &LinkedList::operator[](const IHashable &key) const
 void LinkedList::iterate(void (*funct)(const IHashable &h, const Object &val)) const
 {
     LinkedListNode *aux = first;
+    
     while (aux != nullptr)
     {
         funct(*(aux->key), *(aux->value));
@@ -49,7 +51,8 @@ void LinkedList::iterate(void (*funct)(const IHashable &h, const Object &val)) c
 
 bool LinkedList::erase(const IHashable& key)
 {
-    if(first == nullptr) return false;
+    if(first == nullptr) return false; // there isn't a single node
+
     if(first == last)
     {        
         if (key.equals(*(first->key)))
@@ -65,15 +68,15 @@ bool LinkedList::erase(const IHashable& key)
 
     if (key.equals(*(first->key)))
     {
-        LinkedListNode* aux  = first->next;
+        LinkedListNode* aux = first->next;
         delete first->key;
         delete first->value;
         delete first;
         first = aux;
+
         return true;                
     }
     
-
     LinkedListNode *auxA = first;
 
     while (auxA->next != nullptr)
