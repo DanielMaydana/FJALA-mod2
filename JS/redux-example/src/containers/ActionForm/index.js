@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ActionForm.css';
 import ActionButton from '../../components/ActionButton';
 import PropTypes from 'prop-types';
-
+// import material
 
 function ActionForm({ actions, title, children }) {
   const [disabled, setDisabled] = useState(false);
@@ -14,11 +14,15 @@ function ActionForm({ actions, title, children }) {
   })
 
   const buttons = actions.map((button, index) =>
+    
     <ActionButton
       key={index} text={button.text} type={button.type} icon={button.icon} onClick={button.onClick} loading={button.loading}
       disabled={button.type === 'primary' ? !disabled : false}>
-    </ActionButton>);
+    </ActionButton>
+  );
+  
   const formRef = React.createRef();
+  
   return (
     <div className="action-form" ref={formRef}>
       <h1>{title}</h1>

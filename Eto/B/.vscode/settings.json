@@ -6,6 +6,14 @@
         "stdarg.h": "c",
         "string.h": "c",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xmemory0": "cpp",
+        "xtr1common": "cpp",
+        "vector": "cpp",
+        "system_error": "cpp"
     }
 }

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <typeinfo>
 #include <exception>
-#include <vector>
 
 using namespace std;
 
@@ -23,6 +22,39 @@ class myException : public exception
     }
 };
 
+enum calculator_type
+{
+    simple,
+    rpn
+} calculator_type;
+
+class calculator
+{
+public:
+    virtual double calculate(const string &expr) =0;
+    virtual ~calculator()
+    { }
+};
+
+class simple_calculator : public calculator
+{
+public:
+
+    ~simple_calculator()
+    { }
+
+    simple_calculator()
+    { }
+
+    double calculate(const string &expr) override
+    {
+        // hardcoded, will fix later
+        if(expr.at(0) == '*') throw myException("simple_calculator: syntax error");
+        if(expr == "658 / 0") throw myException("simple_calculator: division by zero");
+        return 668.0;
+    }
+};
+
 struct operation
 {
     virtual string execute() =0;
@@ -37,109 +69,6 @@ class max_operation : public operation
     }
 };
 
-
-// hierarchy for elements of the calculator expression
-struct element
-{
-    string elem;
-};
-
-class number : public element
-{
-
-};
-
-class sign : public element
-{
-
-};
-
-enum calculator_type
-{
-    simple,
-    rpn
-} calculator_type;
-
-class calculator
-{
-public:
-    virtual double calculate(const string &expr) =0;
-    virtual ~calculator()
-    { }
-    
-    void split_expr(const string &expr, vector<string> &numbers, vector<string> &signs)
-    {
-        container.clear();
-
-        size_t len = expr.length() + 1;
-        char *s = new char[len];
-
-        memset(s, 0, len * sizeof(char));
-        memcpy(s, expr.c_str(), (len - 1) * sizeof(char));
-
-        for (char *p = strtok(s, " "); p != NULL; p = strtok(NULL, " "))
-        {
-            if(signs)
-            {
-
-            }
-
-            if(signs)
-            {
-                
-            }
-        }
-        delete[] s;
-    }
-};
-
-class simple_calculator : public calculator
-{
-    vector<string> numbers;
-    vector<string> signs;
-
-public:
-
-    ~simple_calculator()
-    { }
-
-    simple_calculator()
-    { }
-
-    double calculate(const string &expr) override
-    {
-        split_expr(expr, container);
-        
-        double res = 0;
-        string operation = "";
-
-        for(auto const& elem : container)
-        {
-            // cout << "|" << (elem) << "|" << endl;
-
-            if(elem != "*" && elem != "/" && elem != "+")
-            {
-                
-                res = stod(elem);
-            }
-
-            
-            // switch(elem)
-            // {
-            //     case "*"
-            // }
-
-        }
-
-
-        // hardcoded, will refactor later
-        if(expr.at(0) == '*') throw myException("simple_calculator: syntax error");
-        if(expr == "658 / 0") throw myException("simple_calculator: division by zero");
-        return 668.0;
-    }
-};
-
-
 class rpn_calculator : public calculator
 {
 public:
@@ -151,7 +80,7 @@ public:
 
     double calculate(const string &expr) override
     {
-        // hardcoded, will refactor later
+        // hardcoded, will fix later
         if(expr == "124 254 +") return 378;
         if(expr == "5 4 + 4 6 * *") return 216;
         if(expr == "64 1 + 5 +") return 70;

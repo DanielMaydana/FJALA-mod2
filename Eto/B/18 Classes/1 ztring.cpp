@@ -1,139 +1,148 @@
-#include <stdio.h>
-#include <cstdio>
-#include <iostream>
 #include <cstring>
-using namespace std;
+#include <cstdio>
+#include <cstdlib>
 
-constexpr size_t MAX = 16;
-
+constexpr size_t MAX = 16; // es un valor que el compliador reemplaza por algo
 class Ztring
 {
-    char *chars;
-    char sso[MAX]; // small string optimization
+    char* chars;
+    char szo[MAX]; //sso -> small string optimization conciste en que si las cadenas son menor al tamanio max se almacena en sso en lugar de almacenar en el char*
     size_t len;
 
-private:
-    void set_string(const char *s)
-    {
-        if (len >= MAX)
+    public:
+        Ztring(const char* str = ""):len{strlen(str)}
         {
-            chars = (char *)malloc(len + 1);
-            memcpy(chars, s, len + 1);
+            set_string(str);
         }
-        else
+
+    private:
+        void set_string(const char* str)
         {
-            memcpy(sso, s, len + 1);
+            if(len>=MAX)
+            {
+                chars = (char*)malloc(len+1);
+                memcpy(chars,str,len+1);
+            }
+            else
+            {
+                memcpy(szo,str,len+1);
+            }
         }
-    }
-
-public:
-    Ztring(const char *s = "") : len{strlen(s)}
-    {
-        set_string(s);
-    }
-
-    // COPY CONSTR
-    // Ztring z1 = z2;
-    Ztring(const Ztring &src) : len{src.len}
-    {
-        set_string(src.data());
-    }
-
-    const char *data() const
-    {
-        return len < MAX ? sso : chars;
-    }
-
-    ~Ztring()
-    {
-        if (len >= MAX)
+    public:
+        const char* data() const
         {
-            free(chars);
+            return len<MAX?szo:chars;
         }
-    }
 
-    // ASSIGN OPERATOR
-    // z1 = z2;
-    Ztring &operator=(const Ztring &src) 
-    {
-        if (this == &src)
+        ~Ztring()
+        {
+            if(len>=MAX) free(chars);
+        }
+
+        Ztring(const Ztring& s)
+        :len{s.len}
+        {
+            set_string(s.data());
+        }
+        
+        //sobrecarga de operador
+
+        Ztring& operator = (const Ztring& src)
+        {
+            if(this == &src) return *this;
+            
+            this->~Ztring();
+            len = src.len;
+            set_string(src.data());
             return *this;
-        this->~Ztring();
-        len = src.len;
-        set_string(src.data());
-        return *this;
-    }
-
-    Ztring operator+(const Ztring &src) const //este const dice que el this no cambia
-    {
-        auto nlen = len + src.len;
-
-        Ztring ns;
-        ns.len = nlen;
-
-        if (nlen >= MAX)
-        {
-            ns.chars = (char *)malloc(nlen + 1);
         }
 
-        char *str = nlen < MAX ? ns.sso : ns.chars;
-
-        memcpy(str, data(), len);
-        memcpy(str + len, src.data(), src.len + 1);
-        return ns;
-    }
-
-    //este const dice que el this no cambia
-    Ztring &operator+=(const Ztring &src)
-    {
-        auto nlen = len + src.len;
-
-        if (len >= MAX)
+        Ztring operator +(const Ztring& s) const
         {
-            chars = (char *)realloc(chars, nlen + 1);
-            memcpy(chars + len, src.data(), src.len + 1);
+            auto nlen = len + s.len;
+
+            Ztring ns;
+            ns.len = nlen;
+
+            if(nlen >= MAX)
+            {
+                ns.chars = (char*)malloc(nlen+1);
+            }
+               
+                char* str = nlen<MAX?ns.szo:ns.chars;
+                memcpy(str,data(),len);
+                memcpy(str+len,s.data(),s.len+1);
+           
+
+            return ns;
+        }
+
+        //Sobrecarga operador +=
+
+        Ztring& operator +=(const Ztring& p)
+        {
+            auto nlen = len + p.len;
+            if(len >= MAX)
+            {
+                chars = (char*)realloc(chars, nlen+1);
+                memcpy(chars + len, p.data(), p.len+1);
+                len = nlen;
+                return *this;
+            }
+
+            if(nlen >= MAX)
+            {
+                chars = (char*)malloc(nlen+1);
+                memcpy(chars,data(),len);
+                memcpy(chars+len, p.data(), p.len+1);
+                len = nlen;
+                return *this;
+            }
+
+            memcpy(szo+len, p.data(),p.len+1);
             len = nlen;
             return *this;
         }
 
-        if (nlen >= MAX)
-        {
-            chars = (char *)malloc(nlen + 1);
-            memcpy(chars, data(), len);
-            memcpy(chars + len, src.data(), src.len + 1);
-            len = nlen;
-            return *this;
-        }
-        memcpy(sso + len, src.data(), src.len + 1);
-        len = nlen;
-        return *this;
-    }
 };
 
 int main()
 {
-    // Ztring s = "hola";
-    // puts(s.data());
+    /*Ztring s = "Hola";
+    puts(s.data());
 
-    // Ztring r = "antonio jose de sucre";
-    // puts(r.data());
+    Ztring r = "Antonio Jose de Sucre";
+    puts(r.data());
 
-    // auto p = r;
-    // puts(p.data());
+    auto p = r;
+    puts(p.data());
 
-    // auto x = s;
-    // puts(x.data());
+    //constructor copia
+    auto x = s;
+    puts(x.data());
 
-    Ztring p = "holly ";
-    Ztring q = "molly";
-    // puts(p.data());
+    //sobrecarga de operadores
+    p = "Segmentation";// es igual a decir p = Ztring{"Segmentation"};
+    puts(p.data()); //genera error si no se tiene una sobrecarga de operador
 
-    auto result = p + q;
-    puts(result.data());
+    */
 
-    // Ztring concatenar = "today";
-    // concatenar += " is123";
-    // concatenar += " tuesday";
-    // concatenar += " asdfg";
-    // puts(concatenar.data());
+   
+   //sobrecarga de operador +
+   Ztring h = "Hello";
+   Ztring w = "World";
+   auto hw = h + " " + w;
+   puts(hw.data());
+
+
+    auto hw2 = hw + "of c++ Segmentation Default";
+    puts(hw.data());
+
+
+    Ztring b = "Today";
+    b+= "is";
+    b+="Tuesday, April 24,";
+    puts((b+= "2019").data());
+
 }
+

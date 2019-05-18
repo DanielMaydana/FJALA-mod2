@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import actions from './actions';
+import { connect } from 'react-redux';
+import List from '../../../components/List';
 import ActionForm from '../../../containers/ActionForm';
 import CustomForm from '../../../containers/CustomForm';
 import './createPerson.css';
@@ -52,11 +53,36 @@ class CreatePerson extends React.Component {
         type: 'text'
       }
     ];
+
+    const onListItemClick = () => {
+      console.log("clicked");
+    }
+
+    const musicList = [
+      {
+        // icon : material
+        name : "Josh Homme",
+        legend : "The alligator hour",
+        action : onListItemClick
+      }, {
+        
+        name : "Leah Shapiro",
+        legend : "I want to beleah",
+        action : onListItemClick
+      }, {
+        
+        name : "Richie Havens",
+        legend : "Electric heavens",
+        action : onListItemClick
+      }
+    ];
+
     return (
       <div className="create-person-view">
         <ActionForm actions={actions} title={'Update Person'}>
           <CustomForm inputs={inputs} />
         </ActionForm>
+        <List actions={musicList}></List>
       </div>
     );
   }
