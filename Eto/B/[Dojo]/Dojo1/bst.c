@@ -20,9 +20,12 @@ void bst_add_recursive(bst *b, bstnode **node, void *key, void *value)
         (*node)->right = (*node)->left = NULL;
         return;
     }
+
     int c = b->comparator(key, (*node)->key);
+
     if (c == 0)
         return;
+
     if (c > 0)
         bst_add_recursive(b, &((*node)->right), key, value);
     else
