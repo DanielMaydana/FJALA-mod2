@@ -14,16 +14,16 @@ public:
 
 struct car_id_hash
 {
-    size_t operator()(const car_id& c) const // override () instead of == operator
+    size_t operator()(const car_id &car) const // overload () instead of == operator
     {
         hash<string> h;
-        return h(c.s);
+        return h(car.s);
     }
 };
 
 struct car_id_eq
 {
-    bool operator()(const car_id& a, const car_id& b) const // override () instead of == operator
+    bool operator()(const car_id &a, const car_id &b) const // overload () instead of == operator
     {
         return a.s == b.s && a.id == b.id;
     }
@@ -31,13 +31,14 @@ struct car_id_eq
 
 int main()
 {
-    unordered_map<car_id, string, car_id_hash, car_id_eq>cars; // unordered map needs a functions that returns a hash and comparator function (or classes)
+    // unordered map needs a functions that returns a hash and comparator function (or classes)
+    unordered_map<car_id, string, car_id_hash, car_id_eq> cars;
 
     cars[{"111", 1}] = "Romulo Rojas";
     cars[{"222", 2}] = "Pablo Azero";
     cars[{"333", 3}] = "Marcelo";
 
-    for(auto& e : cars)
+    for (auto &e : cars)
     {
         cout << e.first.s << "\t" << e.second << "\n";
     }

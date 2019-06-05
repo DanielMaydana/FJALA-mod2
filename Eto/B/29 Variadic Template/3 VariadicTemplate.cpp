@@ -7,15 +7,16 @@ using namespace std;
 class Point3D
 {
     int a, b, c;
-public:
 
+public:
     ~Point3D()
     {
         puts("bye");
     }
 
     Point3D(int a, int b, int c) : a{a}, b{b}, c{c}
-    { }
+    {
+    }
 
     void print() const
     {
@@ -23,10 +24,10 @@ public:
     }
 };
 
-template<class T>
+template <class T>
 struct W
 {
-    T* pntr;
+    T *pntr;
 
     ~W()
     {
@@ -34,18 +35,18 @@ struct W
     }
 
     // overloading -> operator
-    T* operator->()
+    T *operator->()
     {
         return pntr;
     }
 };
 
-template<typename T, typename ...ARGS>
+template <typename T, typename... ARGS>
 // W<T> create(const ARGS& ...args)
-W<T> create(ARGS&& ...args)
+W<T> create(ARGS &&... args)
 {
     // return W<T>{ new T{args...} };
-    return W<T>{ new T{std::forward<ARGS>(args)...} }; // not const for move
+    return W<T>{new T{std::forward<ARGS>(args)...}}; // not const for move
 }
 
 int main()

@@ -1,14 +1,14 @@
-#include<stdio.h>
-#include<iostream>
+#include <stdio.h>
+#include <iostream>
 /* 
     Policies is a way to 
 */
 
-
-struct Animal 
+struct Animal
 {
     virtual ~Animal()
-    {}
+    {
+    }
 
     virtual void speak() const = 0;
 };
@@ -17,7 +17,7 @@ struct Cow : Animal
 {
     virtual void speak() const override
     {
-        puts("Muuu"); 
+        puts("Muuu");
     }
 };
 
@@ -25,11 +25,11 @@ struct Dog : Animal
 {
     virtual void speak() const override
     {
-        puts("Woof"); 
+        puts("Woof");
     }
 };
 
-void f(const Animal& a)
+void f(const Animal &a)
 {
     a.speak();
 }

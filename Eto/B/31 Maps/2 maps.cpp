@@ -14,14 +14,14 @@ public:
 
 struct ci_less // could be comparators for many types
 {
-    bool operator()(const ci& a, const ci& b) const // needs to be constant cause map uses const 
+    bool operator()(const ci &a, const ci &b) const // needs to be constant cause map uses const
     {
-        if(a.number < b.number)
+        if (a.number < b.number)
         {
             return true;
         }
 
-        if(b.number < a.number)
+        if (b.number < a.number)
         {
             return false;
         }
@@ -39,7 +39,7 @@ int main()
     ps[{1, "LPZ"}] = "Richie Havens";
     ps[{3, "LPZ"}] = "Robert Levon Been";
 
-    for(auto& e : ps)
+    for (auto &e : ps)
     {
         cout << e.first.number << e.first.city << "\n";
     }

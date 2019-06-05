@@ -1,19 +1,20 @@
-#include<stdio.h>
-#include<utility>
-#include<string.h>
+#include <stdio.h>
+#include <utility>
+#include <string.h>
+#include <iostream>
 using namespace std;
 
 // SOLUTION
 /*
-    ParN b{N{"buen dia"}, N{"bonjour"}}; ==>> this is 'const ref&' x2
+    PairN b{N{"buen dia"}, N{"bonjour"}}; ==>> this is 'const ref&' x2
     We have to implement move equal operator and constructor 
 */
 class N;
 
-char* clone (const char* s)
+char *clone(const char *s)
 {
     auto len = strlen(s);
-    char* aux = new char[len + 1];
+    char *aux = new char[len + 1];
     memcpy(aux, s, len + 1);
 
     return aux;
@@ -22,70 +23,81 @@ char* clone (const char* s)
 class N
 {
     char *aux;
+
 public:
     N(const char *s) : aux{clone(s)}
     {
-      // puts("new");
+        puts("new");
     }
 
-    N(const N& s) : aux {clone(s.aux)}
+    N(const N &s) : aux{clone(s.aux)}
     {
-      // puts("copy");
+        puts("copy");
     }
 
-    N(N&& src) : aux{src.aux} // move constructor, never const!
+    N(N &&src) : aux{src.aux} // move constructor, never const!
     {
+        puts("move");
+
         src.aux = nullptr; // we put the source in nullptr
-      // puts("move");
     }
 
-    N& operator=(const N& src)
+    N &operator=(const N &src)
     {
+        puts("=");
+
         this->~N();
-      // puts("=");
         aux = clone(src.aux);
         return *this;
     }
 
-    N& operator=(N&& src) // move equal operator
+    N &operator=(N &&src) // move equal operator
     {
-        this->~N();
-      // puts("move =");
-        aux = src.aux;
-        src.aux = nullptr;
+        if (this != &src)
+        {
+            puts("move =");
+
+            this->~N();
+            aux = src.aux;
+            src.aux = nullptr;
+        }
         return *this;
     }
 
     ~N()
     {
+        printf("~N *|%s|*\n", aux);
+
         delete[] aux;
     }
 
-    void print()const
+    void print() const
     {
-      puts(aux);
+        puts(aux);
     }
-
 };
 
-N factory(const char* s)
+N factory(const char *s)
 {
     N x{s};
     return x;
 }
 
-class ParN
+class PairN
 {
     N a, b;
-public:
-    ParN(const N& a, const N& b) : a{a}, b{b}
-    {}
 
-    ParN(N&& a, N&& b) : a{move(a)}, b{move(b)}
-    {}
+public:
+    PairN(const N &a, const N &b) : a{a}, b{b}
+    {
+    }
+
+    PairN(N &&a, N &&b) : a{move(a)}, b{move(b)}
+    {
+    }
 };
 
-void interchange(N& a, N&b)
+void interchange(N &a, N &b)
 {
     // wrong way:
     // N aux = a;
@@ -102,26 +114,31 @@ int main()
     // N a{""};
     // a = factory("Hello World");
 
-    // ParN b{N{"buen dia"}, N{"bonjour"}};
+    // PairN b{N{"buen dia"}, N{"bonjour"}};
 
     // /*
     // Cases:
-    //     ParN p1{a, b}
-    //     ParN p2{N{"hola"}, N{"bye"}}
-    //     ParN p2{a, N{"bye"}}
-    //     ParN p2{N{"hola"}, b}
+    //     PairN p1{a, b}
+    //     PairN p2{N{"hola"}, N{"bye"}}
+    //     PairN p2{a, N{"bye"}}
+    //     PairN p2{N{"hola"}, b}
     // */
 
-   // -------------------------------
+    // -------------------------------
 
-    N a{"Luisito comunica cochabamba"};
-    N b{"Y nada quedo despues del examen"};
+    N a{"BRMC"};
 
-    for(int i = 0; i < 100'000'001; i++)
-    {
-        interchange(a, b);
-    }
-
-    a.print();
+    N b = std::move(a);
     b.print();
+
+    puts("\n***END***\n");
+
+    // N b{"Y nada quedo despues del examen"};
+
+    // for (int i = 0; i < 100'000'001; i++)
+    // {
+    //     interchange(a, b);
+    // }
+
+    // b.print();
 }

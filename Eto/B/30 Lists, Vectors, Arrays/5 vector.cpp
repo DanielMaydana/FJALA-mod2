@@ -21,10 +21,11 @@ public:
 struct Circle : public Shape
 {
     double r;
-public:
 
+public:
     Circle(double r) : r{r}
-    { }
+    {
+    }
 
     virtual double get_area() const override
     {
@@ -35,10 +36,11 @@ public:
 struct Square : public Shape
 {
     double side;
-public:
 
+public:
     Square(double side) : side{side}
-    { }
+    {
+    }
 
     double get_area() const override
     {
@@ -49,26 +51,28 @@ public:
 int main()
 {
     // vector<Shape*> fs; // always use * or & for polymorphism using vectors
-    vector<unique_ptr<Shape> > fs; // better to use a smart ptr 
+    vector<unique_ptr<Shape>> fs; // better to use a smart ptr
     fs.emplace_back(new Circle{4});
     fs.push_back(unique_ptr<Shape>(new Circle{2}));
     fs.push_back(unique_ptr<Shape>(new Square{5}));
     fs.push_back(make_unique<Square>(3.14));
 
-    for(auto& f : fs)
+    for (auto &f : fs)
     {
         cout << f->get_area() << "\n";
     }
-    
+
     // auto p = fs.at(0); // unique ptr dont have copy constructor
     // auto &p = fs.at(0); // ref is an alternative
     auto p = move(fs.at(0)); // or we move it
 
-    for(auto& i : fs) // printing the remaining objects
+    puts("\n*****\n");
+
+    for (auto &i : fs) // printing the remaining objects
     {
-        if(i)
+        if (i)
         {
             cout << i->get_area() << "\n";
         }
-    } 
+    }
 }

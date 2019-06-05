@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include <vector>
 #include <array>
+#include <iterator>
 #include <list>
-using namespace std;
+
+#include <algorithm>
 
 class Point
 {
@@ -12,26 +14,40 @@ class Point
 
 public:
     Point(int x, int y) : x{x}, y{y}
-    { }
+    {
+    }
 
     void show() const
     {
-        cout << x << ", " << y << "\n";
+        std::cout << x << ", " << y << "\n";
     }
+
+    friend bool operator==(const Point &a, const Point &b);
 };
+
+bool operator==(const Point &a, const Point &b)
+{
+    return ((a.x == b.x) && (a.y == b.y));
+}
 
 int main()
 {
-    vector<Point>ps;
+    std::vector<Point> ps;
     ps.emplace_back(5, 4);
     ps.emplace_back(9, 3);
     ps.emplace_back(2, 3);
     ps.emplace_back(1, 9);
 
-    ps.emplace_back(Point(33, 333)); // would use copy
+    ps.emplace_back(Point{3, 333}); // would use copy
 
-    for(auto i = ps.begin(); i != ps.end(); ++i)
-    {
-        i->show();
-    }
+    // for(auto i = ps.begin(); i != ps.end(); ++i)
+    // {
+    //     i->show();
+    // }
+
+    Point x1 = Point{5, 4};
+
+    auto index = std::find(std::begin(ps), std::end(ps), x1);
+
+    printf("index: %d\n", *index);
 }

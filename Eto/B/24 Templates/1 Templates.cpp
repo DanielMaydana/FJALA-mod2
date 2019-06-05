@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <stdio.h>
 using namespace std;
 /*
@@ -12,7 +12,7 @@ using namespace std;
 //     return (a + b);
 // }
 
-// int sum(double a, double b) 
+// int sum(double a, double b)
 // {
 //     return a + b;
 // }
@@ -22,32 +22,45 @@ struct U
     int n;
 };
 
-U operator+(const U& a, const U& b) // overload not override
+U operator+(const U &a, const U &b) // overload not override
 {
     return U{a.n + b.n};
 }
 
 // Instead of overloading the same function we parameterize the type of data
-// The code is generated not when the templated is defined, but when the function is called (*here) 
-// template<typename T> // 'typename' can also be 'class' 
-template<class T>
+// The code is generated not when the templated is defined, but when the function is called (*here)
+// template<typename T> // 'typename' can also be 'class'
+template <class T>
 T sum(T a, T b)
 {
-    return a + b; // works as long as the logic works for all the T types 
+    return a + b; // works as long as the logic works for all the T types
 }
 
 int main()
 {
-    auto p = sum(6,8); // (*here)
+    auto p = sum(6, 8); // (*here)
     printf("%d\n", p);
 
     auto q = sum(1.22, 3.14); // (*here)
     printf("%f\n", q);
- 
+
     // when using <string> we state the type and the template does not infere
-    auto x = sum<string>("hello ", "world"); 
+    auto x = sum<string>("hello ", "world");
     puts(x.data());
 
     auto u = sum(U{6}, U{5});
     printf("%d\n", u.n);
 }
+
+// MEINE
+// template <typename T, typename U>
+// auto sum(const T &a, const U &b)
+// {
+//     return a + b;
+// }
+
+// int main()
+// {
+//     std::cout << sum(3, 4.3) << "\n";
+//     std::cout << sum<std::string, std::string>("3", "4.3") << "\n";
+// }

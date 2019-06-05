@@ -1,39 +1,50 @@
 #include <stdio.h>
+#include <string.h>
 #include <iostream>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct deleter
 {
-    void release(T* x)
+    void release(T *x)
     {
         delete x;
     }
 };
 
-template<>
+template <>
 struct deleter<char>
 {
-    void release(char* x) // it's not necessary to have the same signature in the specialization
+    void release(char *x) // it's not necessary to have the same signature in the specialization
     {
         free(x);
     }
 };
 
-struct file_deleter
+template <>
+struct deleter<FILE>
 {
-    void release(FILE* f)
+    void release(FILE *f) // it's not necessary to have the same signature in the specialization
     {
         fclose(f);
-        puts("THAT'S ALL FOLKS");
+        puts("closing FILE");
     }
 };
 
-template<typename T, typename Deleter = deleter<T>>
-struct W
+// struct file_deleter
+// {
+//     void release(FILE *f)
+//     {
+//         fclose(f);
+//         puts("THAT'S ALL FOLKS");
+//     }
+// };
+
+template <typename T, typename Deleter = deleter<T>>
+struct Wrapper
 {
-    T* val;
-    ~W()
+    T *val;
+    ~Wrapper()
     {
         Deleter d;
         d.release(val); // we use the same name function for the original and its specialization
@@ -43,22 +54,17 @@ struct W
     }
 };
 
-struct A
-{
-    A()
-    {
-        puts("HI");
-    }
-
-    ~A()
-    {
-        puts("BYE");
-    }
-};
-
 int main()
 {
+
+    // char *aux = (char *)malloc(5);
+    // strcpy(aux, "He55o");
+
+    // Wrapper<char> b{aux};
+    // puts(b.val);
+
     FILE *f = fopen("h.txt", "w");
     fprintf(f, "Hola");
-    W<FILE, file_deleter> wf{f}; 
+
+    Wrapper<FILE> wf{f};
 }

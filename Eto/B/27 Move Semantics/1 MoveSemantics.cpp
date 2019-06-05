@@ -1,11 +1,11 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 using namespace std;
 // PROBLEM
-char* clone (const char* s)
+char *clone(const char *s)
 {
     auto len = strlen(s);
-    char* aux = new char[len + 1];
+    char *aux = new char[len + 1];
     memcpy(aux, s, len + 1);
 
     return aux;
@@ -14,21 +14,23 @@ char* clone (const char* s)
 class N
 {
     char *aux;
+
 public:
     N(const char *s) : aux{clone(s)}
     {
         puts("new");
     }
 
-    N(const N& s) : aux {clone(s.aux)}
+    N(const N &s) : aux{clone(s.aux)}
     {
         puts("copy");
     }
 
-    N& operator=(const N& src)
+    N &operator=(const N &src)
     {
-        this->~N();
         puts("=");
+
+        this->~N();
         aux = clone(src.aux);
         return *this;
     }
@@ -38,14 +40,13 @@ public:
         delete[] aux;
     }
 
-    void print()const
+    void print() const
     {
         puts(aux);
     }
-
 };
 
-N factory(const char* s)
+N factory(const char *s)
 {
     N x{s};
     return x;
@@ -54,8 +55,9 @@ N factory(const char* s)
 class ParN
 {
     N a, b;
+
 public:
-    ParN(const N& a, const N& b) : a{a}, b{b}
+    ParN(const N &a, const N &b) : a{a}, b{b}
     {
     }
 };

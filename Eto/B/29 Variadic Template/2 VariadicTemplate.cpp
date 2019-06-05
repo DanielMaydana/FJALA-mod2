@@ -10,7 +10,7 @@ void print(int x)
     printf("%d", x);
 }
 
-void print(const char* x)
+void print(const char *x)
 {
     printf("%s", x);
 }
@@ -20,15 +20,15 @@ void print(bool x)
     printf("%s", (x ? "true" : "false"));
 }
 
-template<class P>
-void join(const char* c, const P& p)
+template <class T>
+void join(const char *c, const T &t)
 {
-    print(p);
+    print(t);
     printf("\n");
 }
 
-template<class T, class ...ARGS> 
-auto join(const char* sep, const T& a, const ARGS& ...args) // last step in the recursive execution // LAST DECLARATION
+template <class T, class... ARGS>
+auto join(const char *sep, const T &a, const ARGS &... args) // last step in the recursive execution // LAST DECLARATION
 {
     print(a);
     print(sep);

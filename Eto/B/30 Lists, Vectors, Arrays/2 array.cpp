@@ -3,14 +3,14 @@
 #include <array>
 using namespace std;
 
-template<typename Container> 
-void show(const Container& c) 
+template <typename Container>
+void show(const Container &c)
 {
     // for(typename Container::const_iterator i = c.begin();
     // i != c.end(); ++i)
-    for(auto& i : c)
+    for (auto &i : c)
     {
-        // printf("%d\n", (*i)); // would only work with int  
+        // printf("%d\n", (*i)); // would only work with int
         cout << i << "\n";
     }
 }

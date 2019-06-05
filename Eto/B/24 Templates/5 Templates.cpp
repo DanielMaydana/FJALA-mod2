@@ -5,16 +5,18 @@ using namespace std;
 // TEMPLATE SPECIALIZATION
 // WITH CLASSES!
 
-template<class T>
+template <class T>
 class Wrapper
 {
     T val;
+
 public:
-    Wrapper(const T& x) : val{x}
+    Wrapper(const T &x) : val{x}
     {
+        std::cout << "wrp cnstr\n";
     }
 
-    const T& get() const
+    const T &get() const
     {
         return val;
     }
@@ -23,9 +25,19 @@ public:
 struct Point
 {
     int x, y;
+
+    Point(const int &x, const int &y) : x{x}, y{y}
+    {
+        std::cout << "pnt cnstr\n";
+    }
+
+    ~Point()
+    {
+        std::cout << "pnt del\n";
+    }
 };
 
-struct A
+/* struct A
 {
     ~A()
     {
@@ -40,16 +52,18 @@ struct A
 
 struct B : A
 {
-
 };
-
-template<>
+*/
+template <>
 class Wrapper<Point>
 {
     Point p;
+
 public:
-    Wrapper(const Point& p) : p{p}
-    {}
+    Wrapper(const Point &p) : p{p}
+    {
+        std::cout << "wrp pnt cnstr\n";
+    }
 
     void print() const
     {
@@ -57,15 +71,17 @@ public:
     }
 };
 
-template<typename T>
-class Wrapper<T*> // pointer specialization
+template <typename T>
+class Wrapper<T *> // pointer specialization
 {
-    T* val; 
-public:
-    Wrapper(T* val) : val{val}
-    {}
+    T *val;
 
-    const T& get() const
+public:
+    Wrapper(T *val) : val{val}
+    {
+    }
+
+    const T &get() const
     {
         return *val;
     }
@@ -73,6 +89,7 @@ public:
     ~Wrapper()
     {
         delete val;
+        std::cout << "wrp deleted\n";
     }
 };
 
@@ -81,20 +98,20 @@ int main()
     Wrapper<int> p{10};
     printf("%d\n", p.get());
 
-    Wrapper<string> q{"Queens"};
-    printf("%s\n", q.get().data());
+    // Wrapper<string> q{"Queens"};
+    // printf("%s\n", q.get().data());
 
-    Wrapper<Point> pnt{Point{5,25}};
-    pnt.print();
+    // Wrapper<Point> pnt{Point{5, 25}};
+    // pnt.print();
 
-    Wrapper<Point*> pnt_star{new Point{10,10}};
-    printf("(%d, %d)\n", pnt_star.get().x, pnt_star.get().y);
+    // Wrapper<Point *> pnt_star{new Point{11, 2}};
+    // printf("(%d, %d)\n", pnt_star.get().x, pnt_star.get().y);
     // delete pnt_star;
 
+    /*
     Wrapper<A*> w{new A{}};
     w.get().say_hi();
 
     Wrapper<B*> w2{new B{}};
-    w2.get().say_hi();
-
+    w2.get().say_hi(); */
 }

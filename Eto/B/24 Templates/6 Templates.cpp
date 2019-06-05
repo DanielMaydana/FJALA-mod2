@@ -5,7 +5,7 @@ using namespace std;
 // TEMPLATE SPECIALIZATION
 // WITH CLASSES!
 
-template<class T, class U> // multiple typenames (or classes)
+template <class T, class U> // multiple typenames (or classes)
 struct Q
 {
     T a;
@@ -18,7 +18,7 @@ struct Q
     }
 };
 
-template<class T> // partial specialization
+template <class T> // partial specialization
 struct Q<T, string>
 {
     T a;

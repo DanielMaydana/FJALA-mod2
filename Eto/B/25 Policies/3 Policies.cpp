@@ -1,30 +1,33 @@
 #include <stdio.h>
 #include <iostream>
+#include <string.h>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct deleter
 {
-    void release(T* x)
+    void release(T *x)
     {
         delete x;
     }
 };
 
-template<>
+template <>
 struct deleter<char>
 {
-    void release(char* x) // it's not necessary to have the same signature in the specialization
+    void release(char *x) // it's not necessary to have the same signature in the specialization
     {
         free(x);
+        std::cout << "bye char\n";
     }
 };
 
-template<typename T, typename Deleter = deleter<T>>
-struct W
+template <typename T, typename Deleter = deleter<T>>
+struct Wrapper
 {
-    T* val;
-    ~W()
+    T *val;
+
+    ~Wrapper()
     {
         Deleter d;
         d.release(val); // we use the same name function for the original and its specialization
@@ -49,13 +52,13 @@ struct A
 
 int main()
 {
-    W<A> a{new A{}};
+    // Wrapper<A> a{new A{}};
 
     // --------------------------
 
-    char *aux = (char*) malloc(5);
-    strcpy(aux, "Hello");
+    char *aux = (char *)malloc(5);
+    strcpy(aux, "He55o");
 
-    W<char> b {aux};
+    Wrapper<char> b{aux};
     puts(b.val);
 }

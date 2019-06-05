@@ -6,16 +6,15 @@
 #include <memory>
 #include <array>
 #include <list>
-#include <set> // use if we want an ordered set
+#include <set>           // use if we want an ordered set
 #include <unordered_set> // use if we don't :P
-#incldue <>
 
 using namespace std;
 
-template<typename Container> 
-void show(const Container& c) // same function as in '3 list.cpp' file 
+template <typename Container>
+void show(const Container &c) // same function as in '3 list.cpp' file
 {
-    for(auto& i : c)
+    for (auto &i : c)
     {
         cout << i << "\n";
     }
@@ -33,6 +32,5 @@ int main()
 
     auto i = s.find("javascriptxxx"); // returns an iterator
 
-    cout << *i << "\n";
-
+    printf("it: %s\n", *i);
 }

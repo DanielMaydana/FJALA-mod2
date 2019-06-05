@@ -1,13 +1,13 @@
-#include<stdio.h>
-#include<iostream>
+#include <stdio.h>
+#include <iostream>
 
 // this way we don't have any virtual, inheritance or polymorphism
-template<class SpeakPolicy> // the typename is a beheavior instead of a typical class
+template <class SpeakPolicy> // the typename is a beheavior instead of a typical class
 struct Animal
 {
     SpeakPolicy sp;
 
-    void speak() const
+    void AnimalSays() const
     {
         sp.speak();
     }
@@ -31,10 +31,10 @@ struct SpeakCow // doesn't have override! yay!
 
 // template<class A>
 // void f(const A& a)
-template<class SeakPolicy>
-void f(const Animal<SeakPolicy>& a)
+template <class SeakPolicy>
+void myFunction(const Animal<SeakPolicy> &beast)
 {
-    a.speak();
+    beast.AnimalSays();
 }
 
 using Dog = Animal<SpeakDog>;
@@ -44,8 +44,8 @@ int main()
 {
     Dog p;
     Cow v;
-    f(p);
-    f(v);
+    myFunction(p);
+    myFunction(v);
 }
 
 // To see which functions were created by the compiler:
