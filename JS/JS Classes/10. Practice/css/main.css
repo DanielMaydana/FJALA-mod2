@@ -1,0 +1,109 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  flex-direction: column;
+  padding-bottom: 32px;
+}
+
+.head {
+  width: calc(100% - 32px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  height: 48px;
+  line-height: 48px;
+  padding-left: 32px;
+  background: #fff;
+  color: #F6A001;
+}
+
+#to-do-app {
+  min-width: 480px;
+  transition: all ease 0.3s
+}
+
+#to-do-app .task {
+  background: #f2f2f2;
+  color: #8A9499;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  justify-content: space-between;
+  transition: all ease 0.5s;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#to-do-app .task:hover {
+  background: #ebebeb;
+}
+
+.input-field {
+  position: relative;
+  margin: 32px;
+}
+
+.input-field input {
+  border: 0;
+  padding: 16px;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 4px;
+  transition: all ease 0.3s;
+  width: 180px;
+}
+
+.input-field input:focus {
+  width: 320px;
+  border: 2px solid #F6A001;
+}
+
+.input-field label {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  font-size: 13px;
+  background: #fff;
+  padding: 0 16px;
+  color: #999
+}
+
+#to-do-app .task.hide {
+  filter: blur(4px);
+  transform: translateY(-8px);
+}
+
+#to-do-app .task input {
+  height: 18px;
+  width: 18px;
+  margin-left: 16px;
+}
+
+#to-do-app .task button {
+  border-radius: 6px;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #c4dceb;
+  color: #655dd0;
+  margin-left: 16px;
+  transition: all ease 0.3s;
+}
+
+#to-do-app .task button:hover {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+#to-do-app .task.done {
+  text-decoration-line: line-through;
+}
