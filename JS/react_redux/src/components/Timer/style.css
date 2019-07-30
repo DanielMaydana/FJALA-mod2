@@ -1,0 +1,25 @@
+.timerComponent {
+  height: 200px;
+  width: 200px;
+  background: #727a9b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(200px at 200px 200px);
+}
+
+.timerComponent p {
+  padding: 0;
+  margin: 0;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonSection button {
+  display: inline-block;
+}

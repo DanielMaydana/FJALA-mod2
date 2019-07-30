@@ -1,7 +1,6 @@
 import StikyComponent from './stikyComponent.js';
 import StikyScroll from './stikyScroll.js';
 
-
 (function () {
 
   const stikyScrollElement = document.querySelector('.stiky-container');

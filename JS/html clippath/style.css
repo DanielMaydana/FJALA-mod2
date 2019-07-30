@@ -1,0 +1,51 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.toolbar {
+  height: 60px;
+  width: 100%;
+  background: rgb(20, 194, 194);
+  color: white;
+  font-family: Helvetica;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card {
+  background: red;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  background: yellowgreen;
+  clip-path: circle(25px at center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: clip-path 0.5s;
+}
+
+.info {
+  display: none;
+}
+
+.avatar:hover + .info {
+  display: block;
+}
+
+.avatar:hover {
+  clip-path: circle(50px at center); 
+}
+

@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "sinon": "^7.3.2"
+  }
+}

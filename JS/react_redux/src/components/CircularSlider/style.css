@@ -1,0 +1,47 @@
+.circularSlider {
+  position: relative;
+  --outterDialPosX: ;
+  --outterDialPosY: ;
+  --innerDialPosX: ;
+  --innerDialPosY: ;
+  background: yellowgreen;
+  display: inline-block;
+}
+
+.outterCircle {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  background-color: #ffd0c7;
+  border: 2.5px solid #f1b8ac;;
+  border-radius: 50%;
+}
+
+.innerCircle {
+  height: 70px;
+  width: 70px;
+  left: 13.5px;
+  top: 13.5px;
+  position: absolute;
+  background-color: #ff9d9d;
+  border: 2.5px solid #b47171;
+  border-radius: 50%;
+}
+
+.dial {
+  height: 12px;
+  width: 12px;
+  background-color: #99a4c4;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.dial.outter {
+  top: var(--outterDialPosY);
+  left: var(--outterDialPosX);
+}
+
+.dial.inner {
+  top: var(--innerDialPosY);
+  left: var(--innerDialPosX);
+}

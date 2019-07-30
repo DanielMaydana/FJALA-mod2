@@ -8,13 +8,16 @@ let arr = [
     score: 100
   },
   {
-    name: 'dan',
+    name: 'pat',
     score: 70
   }
 ]
 
-arr.forEach(elem => {
-  elem.shine = '';
-});
+function loops() {
+  let arr = ['fleet', 'foxes'];
+  console.log(arr);
+}
+
+loops();
 
 console.log(arr)

@@ -1,0 +1,20 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.toolbar ul {
+  list-style-type: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+.toolbar li {
+  margin: 0;
+  list-style: none;
+}

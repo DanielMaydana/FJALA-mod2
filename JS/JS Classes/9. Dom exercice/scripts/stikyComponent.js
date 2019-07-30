@@ -1,4 +1,5 @@
 export default class StikyComponent {
+
     constructor(element) {
         this.element = element;
         this.header = element.querySelector('.header');
@@ -9,12 +10,10 @@ export default class StikyComponent {
         const elementPosition = this.element.offsetTop;
         console.log(scrollPosition, elementPosition);
 
-        if(scrollPosition >= elementPosition) {
+        if (scrollPosition >= elementPosition) {
             this.header.classList.add('fixed');
         } else {
             this.header.classList.remove('fixed');
-
         }
-
     }
 }
