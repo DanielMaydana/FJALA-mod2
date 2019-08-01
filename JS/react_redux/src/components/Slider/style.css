@@ -1,0 +1,32 @@
+
+.sliderCmpt {
+	border: 2px solid #ccc;
+	border-radius: 50%;
+	height: var(--size);
+	width: var(--size);
+	position: relative;
+	margin: 80px;
+	background-color: tomato;
+}
+
+.sliderCmpt .mainPoint {
+	height: 24px;
+	width: 24px;
+	border-radius: 50%;
+	background: #9c27b0;
+	position: absolute;
+	top: calc((var(--size) / 2) - 12px);
+	right: -12px;
+	cursor: grab;
+	z-index: 100;
+}
+
+.sliderCmpt .step {
+	height: 6px;
+	width: 6px;
+	border-radius: 50%;
+	background: #666;
+	position: absolute;
+	top: calc((var(--size) / 2) - 3px);
+	left: calc((var(--size) / 2) - 3px);
+}

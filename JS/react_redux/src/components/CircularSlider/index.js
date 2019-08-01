@@ -4,14 +4,14 @@ import './style.css';
 
 function CircularSlider() {
 
-  const componentRef = React.createRef();
+  const compRef = React.createRef();
 
   return (
-    <div className="circularSlider" ref={componentRef}>
-      <div className="dial inner"></div>
+    <div className="circularSlider" ref={compRef}>
       <div className="dial outer"></div>
-      <div className='innerCircle'></div>
-      <div className='outterCircle'></div>
+      <div className="dial inner"></div>
+      <div className='circle inner'></div>
+      <div className='circle outer'></div>
     </div>
   )
 }

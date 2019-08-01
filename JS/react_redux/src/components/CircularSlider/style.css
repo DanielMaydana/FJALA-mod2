@@ -1,47 +1,55 @@
 .circularSlider {
-  position: relative;
   --outterDialPosX: ;
   --outterDialPosY: ;
   --innerDialPosX: ;
   --innerDialPosY: ;
-  background: yellowgreen;
-  display: inline-block;
-}
-
-.outterCircle {
-  height: 100px;
-  width: 100px;
+  --sideLength: 120px;
+  --borderWidth: 11px;
+  --diamOutter: calc(var(--sideLength) - 2 * var(--borderWidth));
+  --diamInner: calc(0.6 * var(--diamOutter));
   position: relative;
-  background-color: #ffd0c7;
-  border: 2.5px solid #f1b8ac;;
-  border-radius: 50%;
+  display: inline-block;
+  height: var(--sideLength);
+  width: var(--sideLength);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.innerCircle {
-  height: 70px;
-  width: 70px;
-  left: 13.5px;
-  top: 13.5px;
+.circle {
+  border-style: solid;
+  border-width: var(--borderWidth);
   position: absolute;
-  background-color: #ff9d9d;
-  border: 2.5px solid #b47171;
+  background: none;
   border-radius: 50%;
+  border-color: #cccccc;
+  z-index: 100;
+  background: var(--colorTest);
+}
+
+.circle.inner {
+  height: var(--diamInner);
+  width: var(--diamInner);
+}
+
+.circle.outer {
+  height: var(--diamOutter);
+  width: var(--diamOutter);
 }
 
 .dial {
-  height: 12px;
-  width: 12px;
-  background-color: #99a4c4;
+  height: var(--borderWidth);
+  width: var(--borderWidth);
+  background: #44475f;
   border-radius: 50%;
   position: absolute;
 }
 
-.dial.outter {
-  top: var(--outterDialPosY);
-  left: var(--outterDialPosX);
+.dial.inner {
+  z-index: 200;
 }
 
-.dial.inner {
-  top: var(--innerDialPosY);
-  left: var(--innerDialPosX);
+.dial.outer {
+  z-index: 200;
 }

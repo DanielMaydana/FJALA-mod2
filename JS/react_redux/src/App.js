@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Timer from './components/Timer'
+import Slider from './components/Slider'
 import CircularSlider from './components/CircularSlider'
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <CircularSlider />
+        {/* <CircularSlider /> */}
+        <Slider steps={10} size={120} />
       </div>
     );
   }
