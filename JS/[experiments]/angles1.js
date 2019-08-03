@@ -1,15 +1,28 @@
-const stepAngle = 36;
-const conversion = Math.PI / 180;
-const radius = 60;
-let points = [];
+function ArchPointsGenerator(diameter, dialDiameter, steps) {
 
-for (let i = 1; i <= 10; i++) {
-  points.push(
-    {
-      x: radius + Math.cos(i * stepAngle * conversion),
-      y: radius + Math.sin(i * stepAngle * conversion),
-    }
-  )
+  const conversion = Math.PI / 180;
+  const stepAngle = 360 / steps;
+  const radius = (diameter - dialDiameter) / 2;
+  let points = [];
+  let angleT;
+
+  function Round(toRound, decPlaces = 2) {
+    return Math.round(toRound * decPlaces * 10) / (decPlaces * 10);
+  }
+
+  for (let i = 1; i <= steps; i++) {
+
+    angleT = conversion * stepAngle * i;
+
+    points.push(
+      {
+        n: i,
+        xPoint: Round(radius + Math.cos(angleT) * radius),
+        yPoint: Round(radius + Math.sin(angleT) * radius),
+      }
+    )
+  }
+  return points;
 }
 
-console.log(Math.cos(conversion));
+console.log(ArchPointsGenerator(120, 16, 10));

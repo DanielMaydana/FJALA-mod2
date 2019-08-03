@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { fromEvent } from 'rxjs';
-import StepDivider from '../../Utilities/SliderUtilities'
 import './style.css';
 
 const SliderMath = require('../../Utilities/SliderUtilities');
@@ -20,28 +19,34 @@ function Slider({ steps, size }) {
 		return () => unsubscribe();
 	}, []);
 
-	function TranslateElem(elem, x, y) {
+	function positionStepTo(x, y, elem) {
 		elem.style.transform = `translateX(${x}px) translateY(${y}px)`;
+	}
+
+	function setRefProperties(sliderRef, element, size) {
+		element.classList.add('step');
+		sliderRef.current.appendChild(element);
+		sliderRef.current.style.setProperty('--size', `${size}px`);
 	}
 
 	function CreateSteps() {
 
 		const stepsData = [];
-		// TODO: replace the for
-		// const stepsData2 = Array.from(Array(steps).keys('a'));
-		// console.log(stepsData2);
 
 		for (let index = 0; index < steps; index++) {
-			const element = document.createElement('span');
-			element.classList.add('step');
-			const degree = stepBy * index;
-			// I am a genius, please clean my garbage
-			const stepPoint = SliderMath.calcCoordinatesFrom(degree, radio);
 
-			stepsData.push({ element, x: stepPoint.x, y: stepPoint.y, degree });
-			TranslateElem(element, stepPoint.x, stepPoint.y);
-			sliderRef.current.appendChild(element);
-			sliderRef.current.style.setProperty('--size', `${size}px`);
+			const element = document.createElement('span');
+			const stepDegree = stepBy * index;
+			const stepPoint = SliderMath.calcCoordinatesFrom(stepDegree, radio);
+
+			stepsData.push({
+				element,
+				x: stepPoint.x,
+				y: stepPoint.y,
+				stepDegree
+			});
+			positionStepTo(stepPoint.x, stepPoint.y, element);
+			setRefProperties(sliderRef, element, size);
 		}
 
 		return stepsData;
@@ -65,8 +70,6 @@ function Slider({ steps, size }) {
 		console.log('unsubscribe');
 	}
 
-	// function CalcDelta
-
 	function calcEventCoordinatesFrom(sliderRef, event) {
 		return {
 			x: event.x - sliderRef.current.offsetLeft,
@@ -77,7 +80,7 @@ function Slider({ steps, size }) {
 	function calcPositionFromCenter(eventPosition, size) {
 		return {
 			deltaX: eventPosition.x - (size / 2),
-			deltaY: (size / 2) - eventPosition.y
+			deltaY: (size / 2) - eventPosition.y,
 		}
 	}
 
@@ -88,9 +91,9 @@ function Slider({ steps, size }) {
 
 			const eventPosition = calcEventCoordinatesFrom(sliderRef, e);
 			console.log(sliderRef.current.offsetTop, sliderRef.current.offsetLeft, 'aca')
-			// const deltaX = eventPosition.x - (size / 2);
-			// const deltaY = (size / 2) - eventPosition.y;
+
 			const positionFromCenter = calcPositionFromCenter(eventPosition, size);
+
 			console.log('deltaX:', positionFromCenter.deltaX, ' - deltaY: ', positionFromCenter.deltaY);
 			const rad = Math.atan2(positionFromCenter.deltaY, positionFromCenter.deltaX);
 			const deg = rad * (180 / Math.PI)

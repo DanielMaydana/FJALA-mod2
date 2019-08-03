@@ -10,7 +10,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <CircularSlider /> */}
+        {/* <Timer /> */}
         <Slider steps={10} size={120} />
       </div>
     );

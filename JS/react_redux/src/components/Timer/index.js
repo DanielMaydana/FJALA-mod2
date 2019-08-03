@@ -1,13 +1,14 @@
 import React, { useState, useRef } from 'react';
 import * as rxjs from 'rxjs';
+import { take } from 'rxjs/operators'
 import './style.css';
 
 function Timer() {
 
   const step = 1000;
   const [seconds, setSeconds] = useState(0);
-  const [$clockObservable] = useState(rxjs.interval(step));
   const [clockSubscription, setClockSubscription] = useState();
+  const [$clockObservable] = useState(rxjs.interval(step));
 
   function startTimer() {
     if (clockSubscription) {
